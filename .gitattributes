@@ -1,0 +1,4 @@
+webpack.config.js merge=ours
+server.js merge=ours
+package.json merge=ours
+/src/app/settings.js merge=ours

@@ -1,0 +1,152 @@
+{
+  "name": "kuudesaika",
+  "description": "6Aika hanke - Helsingin kunnallisvaltuuston päätökset",
+  "version": "0.1.0",
+  "author": {
+    "name": "Codecontrol Oy",
+    "url": "https://github.com/Codecontrol-Oy/kuudesaika"
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "<rootDir>/mocks/matchMedia.js",
+    "moduleNameMapper": {
+      "~components": "<rootDir>/components",
+      "~.+\\.(css|scss)$": "<rootDir>/mocks/empty.js",
+      "~mocks": "<rootDir>/mocks"
+    },
+    "coverageDirectory": "report",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/containers/",
+      "/docs/",
+      "/build/",
+      "/mocks/"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 0,
+        "functions": 0,
+        "lines": 0,
+        "statements": 0
+      }
+    },
+    "testRegex": "\\.test\\.(js|jsx)$"
+  },
+  "contributors": [
+    {
+      "name": "Toni Iltanen",
+      "email": "toni.iltanen@codecontrol.fi",
+      "url": "https://github.com/ToniIltanen"
+    },
+    {
+      "name": "Samuli Polvi",
+      "email": "samuli.polvi@codecontrol.fi",
+      "url": "https://github.com/SamuliPolvi"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Codecontrol-Oy/control-it.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Codecontrol-Oy/control-it/issues"
+  },
+  "devDependencies": {
+    "autoprefixer": "~6.4.0",
+    "babel-core": "~6.13.2",
+    "babel-eslint": "~6.0.4",
+    "babel-loader": "~6.0.1",
+    "babel-plugin-transform-decorators-legacy": "~1.3.4",
+    "babel-preset-es2015": "~6.1.4",
+    "babel-preset-react": "~6.1.4",
+    "babel-preset-stage-0": "~6.24.1",
+    "babel-preset-stage-1": "~6.24.1",
+    "cross-env": "~2.0.0",
+    "css-loader": "~0.23.1",
+    "enzyme": "~2.8.0",
+    "eslint": "~3.3.1",
+    "eslint-plugin-babel": "~3.2.0",
+    "eslint-plugin-react": "~6.1.2",
+    "extract-text-webpack-plugin": "~1.0.1",
+    "internal-ip": "~1.2.0",
+    "jasmine-reporters": "~2.2.1",
+    "jest": "~19.0.2",
+    "koa-webpack-dev-middleware": "~1.3.0",
+    "material-ui": "~0.16.6",
+    "node-sass": "^3.8.0",
+    "postcss-loader": "^0.10.1",
+    "react": "~15.4.1",
+    "react-addons-css-transition-group": "~15.4.1",
+    "react-addons-test-utils": "~15.4.1",
+    "react-dom": "~15.4.1",
+    "react-tap-event-plugin": "~2.0.1",
+    "react-toolbox": "~1.1.2",
+    "redux-mock-store": "~1.2.2",
+    "rimraf": "~2.6.1",
+    "sass-loader": "~4.0.0",
+    "style-loader": "~0.13.1",
+    "typescript": "^2.3.2",
+    "webpack": "~1.13.2"
+  },
+  "scripts": {
+    "build": "cross-env NODE_ENV=development UV_THREADPOOL_SIZE=100 webpack --config webpack.config",
+    "deploy": "gh-pages -d build",
+    "start": "node server",
+    "test": "npm run clean:report && jest",
+    "test:watch": "npm run clean:report && jest --watch",
+    "test:ci": "npm run clean:report && jest --coverage",
+    "clean": "rimraf ./build",
+    "clean:report": "rimraf ./report"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/Codecontrol-Oy/control-it",
+  "dependencies": {
+    "axios": "~0.15.3",
+    "axios-fileupload": "0.0.1",
+    "babel-polyfill": "~6.23.0",
+    "bluebird": "^3.5.0",
+    "concat-stream": "^1.6.0",
+    "copy-webpack-plugin": "~4.0.1",
+    "etherpad-lite-client": "~0.8.0",
+    "fs-web": "^1.0.1",
+    "grommet": "~1.1.0",
+    "grommet-addons": "~0.3.0",
+    "jest": "~19.0.2",
+    "jshashes": "^1.0.6",
+    "json-loader": "~0.5.4",
+    "koa": "~2.0.0",
+    "koa-convert": "~1.2.0",
+    "blueimp-md5": "^2.6.0",
+    "crypto": "0.0.3",
+    "express-session": "^1.14.2",
+    "image-webpack-loader": "^3.1.0",
+    "install": "^0.8.4",
+    "koa-body": "^1.6.0",
+    "koa-cors": "0.0.16",
+    "koa-generic-session": "~1.11.4",
+    "koa-passport": "~3.0.0-rc.2",
+    "koa-route": "~3.2.0",
+    "koa-webpack-hot-middleware": "~1.0.3",
+    "material-ui": "~0.16.6",
+    "material-ui-pagination": "~1.0.1",
+    "oauth": "~0.9.14",
+    "passport-strategy": "~1.0.0",
+    "react-cookie": "~1.0.4",
+    "react-copy-to-clipboard": "~4.2.3",
+    "react-dropzone": "^3.13.1",
+    "react-localization": "0.0.8",
+    "react-redux": "~4.4.6",
+    "react-router-redux": "~4.0.7",
+    "react-tap-event-plugin": "~2.0.1",
+    "react-toolbox": "~1.3.4",
+    "react-window-resize-listener": "~1.1.0",
+    "redux": "~3.6.0",
+    "redux-logger": "~2.7.4",
+    "redux-promise-middleware": "~4.1.0",
+    "redux-session": "~1.0.2",
+    "redux-thunk": "~2.1.0",
+    "request": "~2.79.0",
+    "request-promise": "^4.2.1",
+    "uid2": "0.0.3",
+    "winston": "~2.3.0"
+  }
+}
