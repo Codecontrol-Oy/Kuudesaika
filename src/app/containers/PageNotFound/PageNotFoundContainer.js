@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
     };
 })
 
-class PageNotFound extends React.Component {
+export default class PageNotFoundContainer extends React.Component {
 
     constructor(props) {
         super(props);
@@ -20,5 +20,3 @@ class PageNotFound extends React.Component {
       )};
 
 };
-
-export default PageNotFound;

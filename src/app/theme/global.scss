@@ -1,0 +1,46 @@
+@import 'variables';
+
+html, body {
+    margin:0px;
+    padding:0px;
+    color: white;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+h1 {
+    color:white;
+}
+.header, .footer {
+    background-color: $primary-color;
+}
+.header {
+    border-bottom: 4px solid $secondary-color;
+}
+.footer {
+    border-top: 4px solid $secondary-color; 
+}
+
+.headerTitle {
+    font-size: 3rem;
+    padding-left:20px;
+    font-weight: bold;
+    color:white !important;
+    float:left;
+    line-height: 1.125;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.app {
+    margin: 20px 15% 20px 15%;
+    background-color:white;
+}
+
+.sectionTitle {
+    border-bottom: 2px solid $secondary-color;
+}
+

@@ -1,2 +1,3 @@
-export {default as LandingPage} from './landingPage/landingPage.js';
-export {default as PageNotFound} from './pageNotFound/pageNotFound.js';
+export {default as MainPageContainer} from './MainPage/MainPageContainer.js';
+export {default as OrganizationContainer} from './Organization/OrganizationContainer.js';
+export {default as PageNotFoundContainer} from './PageNotFound/PageNotFoundContainer.js';
