@@ -27,8 +27,7 @@ export default class LatestCase extends React.Component {
                   style={{borderBottom: "2px solid #CCC"}}
                   label={<Timestamp value={this.props.created_at} fields={"date"}/>}
                   heading={this.props.subject}
-                  description={<Label announce={true}>{this.props.title}</Label>}
-                  link={<Anchor href={"#"} target={"_blank"} label={"siirry"} />} />
+                  description={<Label announce={true}>{this.props.title}</Label>}/>
         </div>
     );
   }

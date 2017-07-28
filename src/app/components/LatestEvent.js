@@ -17,8 +17,7 @@ export default class LatestEvent extends React.Component {
             <Card contentPad={"medium"} 
                   style={{borderBottom: "2px solid #CCC"}}
                   label={<Timestamp fields={"date"} value={this.props.start_date} />}
-                  heading={this.props.organization}
-                  link={<Anchor href={"#" + this.props.id} target={"_blank"} label={"siirry"} />} />
+                  heading={this.props.organization} />
         </div>
     );
   }
