@@ -22,9 +22,7 @@ export default class OrganizationCard extends React.Component {
     browserHistory.push("/organisaatio/" + id);
   }
 
-
   render () {
-
     return (
         <Card flex={"grow"} label={this.props.classification} 
               heading={this.props.name}

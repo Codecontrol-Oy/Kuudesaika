@@ -42,13 +42,24 @@ export default class OrganizationContainer extends React.Component {
 
   componentDidUpdate = () => {
       if(this.props.organization.selected_organization && !this.state.fetchStarted) {
-        this.setState({fetchStarted: true,},this.fetchEvents(this.props.organization.selected_organization));
+        this.setState({fetchStarted: true,},function() {
+            if(this.props.organization.selected_organization.events.length > 0) {
+                this.fetchEvents(this.props.organization.selected_organization);
+            }
+            if(this.props.organization.selected_organization.posts.length > 0) {
+                this.fetchOrganizationPosts(this.props.organization.selected_organization);
+            }
+        });
       }
 
   }
 
   onAccordionChange = (e) => {
     this.fetchActions(e);
+  }
+
+ onPostAccordionChange = (e) => {
+    this.fetchPostActions(e);
   }
 
   fetchMore = () => { 
@@ -89,7 +100,33 @@ export default class OrganizationContainer extends React.Component {
       }
       return eventListing;
   }
-
+  gatherPosts = () => {
+      let postListing = [];
+      if(this.state.posts) {
+          this.state.posts.map(function(post) {
+            let actionList = [];
+            post.actionList.sort((a,b) => a.ordering - b.ordering)
+                            .map(function(action) {
+                action.contents.map(function(para) {
+                    actionList.push(<Section key={para.origin_id + "_PostArticle"}>
+                                        <Heading tag={"h5"} 
+                                                 uppercase={true}>{action.title}
+                                        </Heading>
+                                        {action.fetchedCase ? <Article>({action.fetchedCase.register_id}) {action.fetchedCase.title} </Article> : "" }
+                                        {action.fetchedPost ? <Article><Label>Lausunnonantaja: {action.fetchedPost.label}</Label></Article> : "" }
+                                            <Article><div dangerouslySetInnerHTML={{__html: para.hypertext}}></div></Article>
+                                        </Section>);
+                })
+            });
+            postListing.push(<AccordionPanel 
+                                    key={post.id + "_postValue"} 
+                                    heading={<Label>{post.label}</Label>}>
+                                    {actionList}
+                              </AccordionPanel>);
+        });
+      }
+      return postListing;
+  }
   fetchEvents = (organization) => {
     let offset = 0;
     if(this.state.events) { 
@@ -109,20 +146,17 @@ export default class OrganizationContainer extends React.Component {
   }
  
   fetchActions = (index) => {
-      console.log(index);
       if(typeof(index) != 'undefined') {
         const event = this.state.events[index];
-        console.log(JSON.stringify("event_id: " + event.id));
         event.actions.map(function(action) {
                 axios.get(action)
                     .then(function(actionResponse) {
-                        console.log("Actions event: " + actionResponse.data.event)
                         let existingEvents = self.state.events;
                         existingEvents[index].actionList.push(actionResponse.data); 
                         self.setState({events: existingEvents},function() { 
                             if(actionResponse.data.post)
                             {
-                                this.fetchPost(actionResponse.data.post, actionResponse.data.id, index)
+                                this.fetchActionPosts(actionResponse.data.post, actionResponse.data.id, index)
                             }
                             if(actionResponse.data.case)
                             {
@@ -133,8 +167,37 @@ export default class OrganizationContainer extends React.Component {
         })
     }
   }
+  
+  fetchPostActions = (index) => {
+      if(typeof(index) != 'undefined') {
+          console.log("inside")
+        const post = this.state.posts[index];
+        
+        post.actions.map(function(action) {
+                axios.get(action)
+                    .then(function(actionResponse) {
+                        let existingPosts = self.state.posts;
+                        existingPosts[index].actionList.push(actionResponse.data); 
+                        self.setState({posts: existingPosts});
+                    });
+        })
+    }
+  }
 
-  fetchPost = (actionPost, action_id, eventIndex) => {
+  fetchOrganizationPosts = (organization) => {
+      organization.posts.map((post,index) => {
+        axios.get(post)
+             .then(function(postResponse) {
+                let postList = self.state.posts || [];
+                let currentPost = postResponse.data;
+                currentPost.actionList = [];
+                postList.push(currentPost);
+                self.setState({posts: postList});
+             });
+      });
+  }
+
+  fetchActionPosts = (actionPost, action_id, eventIndex) => {
     axios.get(actionPost)
          .then(function(postResponse) {
              const events = self.state.events;
@@ -164,17 +227,21 @@ export default class OrganizationContainer extends React.Component {
 
   render () {
     const events = this.gatherEvents();
+    const posts = this.gatherPosts();
     return (
         <Section>
             {this.props.organization.selected_organization ? 
             <div>
             <Heading tag={"h3"} uppercase={true} className={theme.sectionTitle}>{this.props.organization.selected_organization.name}</Heading>
             <Heading tag={"h4"} uppercase={true}>Kokoukset</Heading>
-            <Accordion onActive={this.onAccordionChange}>
+            {events && events.length > 0 ? <Accordion onActive={this.onAccordionChange}>
                 {events}
-            </Accordion>
+            </Accordion> : <Label>Ei kokouksia</Label>}
             {this.props.organization.selected_organization.events && this.state.events && this.props.organization.selected_organization.events.length != this.state.events.length ? <Anchor onClick={this.fetchMore}>Hae Lisää</Anchor> : "" }
-            <Heading tag={"h4"} uppercase={true}>Toimet</Heading>
+            <Heading tag={"h4"} uppercase={true}>Lausunnot, Määräykset ja kannanotot</Heading>
+             {posts && posts.length > 0 ? <Accordion onActive={this.onPostAccordionChange}>
+                {posts}
+            </Accordion> : <Label>Ei lausuntoja, määräyksiä tai kannanottoja</Label>}
             </div>
             : <Loader /> }
         </Section>
