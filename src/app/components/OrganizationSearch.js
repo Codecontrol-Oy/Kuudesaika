@@ -46,7 +46,7 @@ export default class OrganizationSearch extends React.Component {
 
     return (
             <Section>
-                <Search onDOMChange={this.onSearch} placeHolder={"Hakusana"} inline={true} size={"medium"} />
+                <Search onDOMChange={this.onSearch} placeHolder={"Hakusana"} responsive={false} inline={true} size={"medium"} />
                 {this.state.searchResults ? this.state.searchResults : this.state.searchStarted ?  <Article>Ei tuloksia.</Article> : ""}
             </Section>
 
