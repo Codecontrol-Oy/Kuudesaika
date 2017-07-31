@@ -5,7 +5,7 @@ import Section from 'grommet/components/Section';
 import Heading from 'grommet/components/Heading';
 import Split from 'grommet/components/Split';
 import Box from 'grommet/components/Box';
-import {OrganizationCardList, Loader, LatestCaseList, LatestEventList} from '../../components' 
+import {OrganizationCardList, Loader, LatestCaseList, LatestEventList, OrganizationSearch} from '../../components' 
 import {fetchOrganizations} from '../../actions/organizationActions.js';
 import {fetchLatest} from '../../actions/caseActions.js';
 import {fetchLatestEvents} from '../../actions/eventActions.js';
@@ -38,6 +38,8 @@ export default class MainPageContainer extends React.Component {
               {this.props.organization.organizations ? <OrganizationCardList organizations={this.props.organization.organizations.results} /> : <Loader />}
             </Box>
             <Box pad='medium' >
+              <Heading className={theme.sectionTitle} tag={"h3"} uppercase={true}>Organisaatiohaku</Heading>
+              {this.props.organization.organizations ? <OrganizationSearch organizations={this.props.organization.organizations.results} /> : <Loader />}
               <Heading className={theme.sectionTitle} tag={"h3"} uppercase={true}>Viimeisimmät kokoukset</Heading>
               {this.props.event.latest_events && this.props.organization.organizations ? <LatestEventList latestEvents={this.props.event.latest_events.results} organizations={this.props.organization.organizations.results} /> : <Loader />}
               <Heading style={{marginTop: "20px"}} className={theme.sectionTitle} tag={"h3"} uppercase={true}>Viimeisimmät Asiat</Heading>

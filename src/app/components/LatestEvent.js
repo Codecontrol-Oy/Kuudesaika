@@ -13,7 +13,7 @@ export default class LatestEvent extends React.Component {
   }
 
   onLinkAction = () => {
-    browserHistory.push("/organisaatio/" + this.props.organization_id);
+    browserHistory.push("/organisaatio/" + this.props.organization.id);
   }
 
   render () {
@@ -21,17 +21,14 @@ export default class LatestEvent extends React.Component {
         <div>
             <Card contentPad={"medium"} 
                   style={{borderBottom: "2px solid #CCC"}}
-                  label={<Timestamp fields={"date"} value={this.props.start_date} />}
+                  label={this.props.organization.data_source + "-" + this.props.organization.classification }
                   link={<Anchor onClick={() => this.onLinkAction()} >Siirry</Anchor>}
-                  heading={this.props.organization} />
+                  heading={this.props.organization.name} />
         </div>
     );
   }
 }
 
 LatestEvent.propTypes = {
-    organization: PropTypes.string,
-    start_date: PropTypes.string,
-    organization_id: PropTypes.string,
-    id: PropTypes.number
+    organization: PropTypes.object
 };

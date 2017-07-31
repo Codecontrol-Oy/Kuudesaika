@@ -17,14 +17,23 @@ export default class LatestEventList extends React.Component {
       }
   }
 
+    getOrganization = (id) => {
+      for(let i = 0; i < this.props.organizations.length; i++) {
+        if(this.props.organizations[i].id == id)
+        {
+            return this.props.organizations[i];
+        }   
+      }
+  }
+
   render () {
     let latest_events = [];
     if(this.props.latestEvents) {
         this.props.latestEvents.sort((a,b) => b.origin_id - a.origin_id).map(function(event) {
             const splitArray = event.organization.split("/");
             const organization_id = splitArray[splitArray.length - 2];
-            const organization = self.getOrganizationName(organization_id);
-            latest_events.push(<LatestEvent key={event.id + "_latest_event"} organization={organization} organization_id={organization_id} start_date={event.start_date} id={event.id}  />)
+            const organization = self.getOrganization(organization_id);
+            latest_events.push(<LatestEvent key={event.id + "_latest_event"}  organization={organization} start_date={event.start_date} id={event.id}  />)
         })
     }
     return (

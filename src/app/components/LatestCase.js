@@ -25,7 +25,7 @@ export default class LatestCase extends React.Component {
         <div>
             <Card contentPad={"medium"} 
                   style={{borderBottom: "2px solid #CCC"}}
-                  label={<Timestamp value={this.props.created_at} fields={"date"}/>}
+                  label={this.props.register_id}
                   heading={this.props.subject}
                   description={<Label announce={true}>{this.props.title}</Label>}/>
         </div>

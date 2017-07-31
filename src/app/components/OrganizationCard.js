@@ -24,7 +24,7 @@ export default class OrganizationCard extends React.Component {
 
   render () {
     return (
-        <Card flex={"grow"} label={this.props.classification} 
+        <Card flex={"grow"} label={this.props.data_source + " - " + this.props.classification} 
               heading={this.props.name}
               thumbnail={<Image alt={"temporary image"} src={"http://lorempixel.com/640/480/people?" + this.props.id} />}
               headingStrong={true} 
