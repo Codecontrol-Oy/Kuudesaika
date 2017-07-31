@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import mainCss from './app.scss';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import localization from './localization/index.js';
 import { connect } from 'react-redux';
