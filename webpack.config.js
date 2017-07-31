@@ -48,10 +48,6 @@ module.exports = {
     fs: 'empty'
   },
  plugins: [
-    new CopyWebpackPlugin([
-      { from: path.resolve(__dirname, './src/images'), to: 'images' },
-      { from: path.resolve(__dirname, './src/stylesheets'), to: 'stylesheets' }
-    ]),
     new ExtractTextPlugin('bundle.css', { allChunks: true }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
