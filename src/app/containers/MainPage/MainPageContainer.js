@@ -29,6 +29,8 @@ export default class MainPageContainer extends React.Component {
       fetchLatestEvents();
   }
 
+  
+
   render () {
     return (
         <Section>

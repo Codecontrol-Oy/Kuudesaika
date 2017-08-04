@@ -13,11 +13,14 @@ import Paragraph from 'grommet/components/Paragraph';
 import Heading from 'grommet/components/Heading';
 import Split from 'grommet/components/Split';
 import Box from 'grommet/components/Box';
-import {fetchOrganization} from '../../actions/organizationActions.js';
+import {fetchOrganization, fetchOrganizations} from '../../actions/organizationActions.js';
 import {Loader} from '../../components' 
+import Map from 'grommet/components/Map';
+import {browserHistory} from 'react-router';
+
 @connect((store) => {
   return {
-    organization: store.organization,
+    organization: store.organization
   };
 })
 
@@ -30,14 +33,19 @@ export default class OrganizationContainer extends React.Component {
         renderObjects: null,
         fetchStarted: false,
         limit: 5,
-        offset: 0
+        offset: 0,
+        selectedOrganization: null
     }
+
     self = this;
   }
 
   componentDidMount = () => {
     const organization_id = this.props.params.id;
-    fetchOrganization(organization_id);
+    this.setState({fetchStarted: false}, function() {
+        fetchOrganizations();
+        fetchOrganization(organization_id)
+    });
   }
 
   componentDidUpdate = () => {
@@ -224,13 +232,140 @@ export default class OrganizationContainer extends React.Component {
          });
   }
 
+  findChild = (child, array) => {
+    for(let i = 0; i < this.props.organization.organizations.results.length; i++) {
+        if(this.props.organization.organizations.results[i].parent) {
+            const parent = this.props.organization.organizations.results[i].parent;
+            const splitArray = parent.split("/");
+            const parent_id = splitArray[splitArray.length - 2];
+            if(parent_id  == child.toString()) 
+            {
+                array.push(this.props.organization.organizations.results[i]);
+                this.findChild(this.props.organization.organizations.results[i].id,array);
+            }
+        }
+    }
+  }
+
+  findParent = (parent, array) => {
+   if(parent) {
+    const splitArray = parent.split("/");
+    const parent_id = splitArray[splitArray.length - 2];
+    for(let i = 0; i < this.props.organization.organizations.results.length; i++) {
+            if(this.props.organization.organizations.results[i].id.toString() == parent_id) {
+                if(this.props.organization.organizations.results[i].id != this.props.organization.selected_organization.id) {
+                    array.push(this.props.organization.organizations.results[i]);
+                }
+                if(this.props.organization.organizations.results[i].parent) {
+                    this.findParent( this.props.organization.organizations.results[i].parent,array);
+                }
+                break;
+            }
+    }
+   }
+  }
+
+  openOrganization = (id) => {
+   if(id) {
+        browserHistory.push("/organisaatio/" + id);
+        window.location.reload()
+   }
+  }
+
+  selectOrganization = (index) => {
+      if(this.state.selectedOrganization != index) {
+        this.setState({selectedOrganization: index });
+      }
+  }
+
+  getParents = (organization) => {
+      let results = [];
+      this.findParent(organization.url, results);
+      return results;
+  }
+
+  getChilds = (organization) => {
+      let results = []
+      this.findChild(organization.id, results)
+      return results;
+  }
+    
+
+  gatherOrganizationMap = () => {
+    let categories = [];
+    let parents = this.getParents(this.props.organization.selected_organization);
+    let childs = this.getChilds(this.props.organization.selected_organization);
+    let links = [];
+
+    let organizationList = [];
+    organizationList = organizationList.concat(parents);
+    organizationList.push(this.props.organization.selected_organization);
+    organizationList = organizationList.concat(childs);
+
+    for(let i = 0; i < organizationList.length; i++) {
+        let found = false;
+        for(let x = 0; x < categories.length; x++) {
+            if(categories[x].label == organizationList[i].classification) {
+                found = true;
+            }
+        }
+        if(!found) {
+         categories.push({
+            "id": `category-${organizationList[i].id}`,
+            "label": organizationList[i].classification,
+            "items": []
+         });          
+        }
+
+    }
+    
+        
+    for(let i = 0; i < organizationList.length; i++) {
+      for(let n = 0; n < categories.length; n++) {
+        if(categories[n].label == organizationList[i].classification) {
+            if(organizationList[i].id == this.props.organization.selected_organization.id) {
+                categories[n].items.push({
+                "id": organizationList[i].id.toString(),
+                "label": organizationList[i].name,
+                "node": <Box colorIndex='neutral-1' pad={"small"}>{organizationList[i].name}</Box>
+                });
+            } else {
+                categories[n].items.push({
+                "id": organizationList[i].id.toString(),
+                "label": organizationList[i].name
+                });
+            }
+            break;
+        }
+      }
+    }
+
+    for(let i = 0; i < organizationList.length; i++) {
+      if(organizationList[i].parent) {
+        const parent = organizationList[i].parent;
+        const organization = organizationList[i];
+        const splitArray = parent.split("/");
+        const parent_id = splitArray[splitArray.length - 2];
+        for(let n = 0; n < categories.length; n++) {
+          for(let f = 0; f < categories[n].items.length; f++) {
+            if(categories[n].items[f].id == parent_id) {
+              links.push({"parentId" : parent_id.toString(), "childId" : organization.id.toString()})
+            }
+          }
+        }
+      }
+    }
+    return <Map onClick={() => this.openOrganization(this.state.selectedOrganization)} onActive={this.selectOrganization} active={this.state.selectedOrganization} vertical={false} data={{"categories" : categories, "links": links}} />;
+  
+  }
 
   render () {
     const events = this.gatherEvents();
     const posts = this.gatherPosts();
+    const OrganizationMap = this.props.organization.selected_organization && this.props.organization.organizations ? this.gatherOrganizationMap() : null;
     return (
         <Section>
-            {this.props.organization.selected_organization ? 
+            {this.props.organization.selected_organization && this.props.organization.organizations ? 
             <div>
             <Heading tag={"h3"} uppercase={true} className={theme.sectionTitle}>{this.props.organization.selected_organization.name}</Heading>
             <Heading tag={"h4"} uppercase={true}>Kokoukset</Heading>
@@ -242,6 +377,8 @@ export default class OrganizationContainer extends React.Component {
              {posts && posts.length > 0 ? <Accordion onActive={this.onPostAccordionChange}>
                 {posts}
             </Accordion> : <Label>Ei lausuntoja, määräyksiä tai kannanottoja</Label>}
+            <Heading tag={"h4"} uppercase={true}>Organisaatiokaavio</Heading>
+            {this.props.organization.organizations ? OrganizationMap : null}
             </div>
             : <Loader /> }
         </Section>
