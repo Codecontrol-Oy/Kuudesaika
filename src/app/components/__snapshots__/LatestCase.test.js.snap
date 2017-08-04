@@ -1,13 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Latest case has correct fields 1`] = `
+exports[`<LatestCase /> Matches snapshot 1`] = `
 <div>
   <Card
     a11yTitle="Card"
     contentPad="medium"
     description={
       <Label
-        announce={true}
         size="medium"
       >
         Test case

@@ -20,7 +20,7 @@ export default class LatestCase extends React.Component {
                   style={{borderBottom: '2px solid #CCC'}}
                   label={this.props.register_id}
                   heading={this.props.subject}
-                  description={<Label announce>{this.props.title}</Label>}/>
+                  description={<Label>{this.props.title}</Label>}/>
         </div>
     );
   }
@@ -39,5 +39,5 @@ LatestCase.propTypes = {
     register_id: PropTypes.string,
     function: PropTypes.string,
     attachments: PropTypes.array,
-    subject: PropTypes.string
+    ç: PropTypes.string
 };
