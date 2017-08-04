@@ -17,7 +17,7 @@ export default class LatestEventList extends React.Component {
 
     getOrganization = (id) => {
       for (let i = 0; i < self.props.organizations.length; i++) {
-        if (self.props.organizations[i].id.toString() === id) {
+        if (self.props.organizations[i].id.toString() == id) {
             return self.props.organizations[i];
         }
       }
