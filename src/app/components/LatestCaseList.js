@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import LatestCase from './LatestCase.js';
 import PropTypes from 'prop-types';
 import axios from 'axios';
@@ -8,7 +7,7 @@ export default class LatestCaseList extends React.Component {
     super(props);
     this.state = {
         latest_cases: []
-    }
+    };
     self = this;
   }
 
@@ -16,12 +15,12 @@ export default class LatestCaseList extends React.Component {
       this.onFetchFunctions();
   }
 
-  onFetchFunctions = () => { 
-    if(this.props.latestCases) {
-        this.props.latestCases.map(function(obj) {
+  onFetchFunctions = () => {
+    if (this.props.latestCases) {
+        this.props.latestCases.map(function (obj) {
             axios.get(obj.function)
-                 .then(function(response) {
-                    let cases = self.state.latest_cases || [];
+                 .then(function (response) {
+                    const cases = self.state.latest_cases || [];
                     cases.push(<LatestCase url={obj.url}
                                           id={obj.id}
                                           data_source={obj.data_source}
@@ -35,10 +34,10 @@ export default class LatestCaseList extends React.Component {
                                           function={obj.function}
                                           attachments={obj.attachments}
                                           subject={response.data.name}
-                                          key={obj.id + "_latestcase"}
+                                          key={obj.id + '_latestcase'}
                     />);
                     self.setState({latest_cases: cases});
-                 })
+                 });
 
         });
     }

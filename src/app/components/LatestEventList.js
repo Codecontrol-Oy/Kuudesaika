@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import LatestEvent from './LatestEvent.js';
 export default class LatestEventList extends React.Component {
@@ -9,32 +8,30 @@ export default class LatestEventList extends React.Component {
   }
 
   getOrganizationName = (id) => {
-      for(let i = 0; i < this.props.organizations.length; i++) {
-        if(this.props.organizations[i].id == id)
-        {
+      for (let i = 0; i < this.props.organizations.length; i++) {
+        if (this.props.organizations[i].id === id) {
             return this.props.organizations[i].name;
-        }   
+        }
       }
   }
 
     getOrganization = (id) => {
-      for(let i = 0; i < this.props.organizations.length; i++) {
-        if(this.props.organizations[i].id == id)
-        {
+      for (let i = 0; i < this.props.organizations.length; i++) {
+        if (this.props.organizations[i].id === id) {
             return this.props.organizations[i];
-        }   
+        }
       }
   }
 
   render () {
     let latest_events = [];
-    if(this.props.latestEvents) {
-        this.props.latestEvents.sort((a,b) => b.origin_id - a.origin_id).map(function(event) {
-            const splitArray = event.organization.split("/");
+    if (this.props.latestEvents) {
+        this.props.latestEvents.sort((a, b) => b.origin_id - a.origin_id).map(function (event) {
+            const splitArray = event.organization.split('/');
             const organization_id = splitArray[splitArray.length - 2];
             const organization = self.getOrganization(organization_id);
-            latest_events.push(<LatestEvent key={event.id + "_latest_event"}  organization={organization} start_date={event.start_date} id={event.id}  />)
-        })
+            latest_events.push(<LatestEvent key={event.id + '_latest_event'} organization={organization} start_date={event.start_date} id={event.id} />);
+        });
     }
     return (
         <div>

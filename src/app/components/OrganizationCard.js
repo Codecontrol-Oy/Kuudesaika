@@ -4,7 +4,6 @@ import Card from 'grommet/components/Card';
 import Image from 'grommet/components/Image';
 import Anchor from 'grommet/components/Anchor';
 import {browserHistory} from 'react-router';
-import Timestamp from 'grommet/components/Timestamp';
 import PropTypes from 'prop-types';
 
 @connect((store) => {
@@ -19,16 +18,16 @@ export default class OrganizationCard extends React.Component {
   }
 
   onLinkClick = (id) => {
-    browserHistory.push("/organisaatio/" + id);
+    browserHistory.push('/organisaatio/' + id);
   }
 
   render () {
     return (
-        <Card flex={"grow"} label={this.props.data_source + " - " + this.props.classification} 
+        <Card flex={"grow"} label={this.props.data_source + ' - ' + this.props.classification}
               heading={this.props.name}
-              thumbnail={<Image alt={"temporary image"} src={"http://lorempixel.com/640/480/people?" + this.props.id} />}
-              headingStrong={true} 
-              link={ <Anchor onClick={() => this.onLinkClick(this.props.id)} label={"siirry"} />}
+              thumbnail={<Image alt={"temporary image"} src={'http://lorempixel.com/640/480/people?' + this.props.id} />}
+              headingStrong
+              link={<Anchor onClick={() => this.onLinkClick(this.props.id)} label={"siirry"} />}
         />
     );
   }

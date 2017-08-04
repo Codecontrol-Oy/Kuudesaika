@@ -4,7 +4,6 @@ import createLogger from 'redux-logger';
 import thunk from 'redux-thunk';
 import { routerReducer } from 'react-router-redux';
 import { applyMiddleware, createStore, combineReducers } from 'redux';
-import * as constants from './constants';
 
 const logger = createLogger();
 const middleware = applyMiddleware(promise(), thunk, logger);

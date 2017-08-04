@@ -10,60 +10,59 @@ export default class OrganizationMap extends React.Component {
     super(props);
         this.state = {
         selectedOrganization: null
-    }
+    };
   }
 
   openOrganization = (id) => {
-   if(id) {
-        browserHistory.push("/organisaatio/" + id);
-        window.location.reload()
+   if (id) {
+        browserHistory.push('/organisaatio/' + id);
+        window.location.reload();
    }
   }
 
   selectOrganization = (index) => {
-      if(this.state.selectedOrganization != index) {
+      if (this.state.selectedOrganization !== index) {
         this.setState({selectedOrganization: index });
       }
   }
 
   getParents = (organization) => {
-      let results = [];
+      const results = [];
       this.findParent(organization.url, results);
       return results;
   }
 
   getChilds = (organization) => {
-      let results = []
-      this.findChild(organization.id, results)
+      const results = [];
+      this.findChild(organization.id, results);
       return results;
   }
 
   findChild = (child, array) => {
-    for(let i = 0; i < this.props.organizations.length; i++) {
-        if(this.props.organizations[i].parent) {
+    for (let i = 0; i < this.props.organizations.length; i++) {
+        if (this.props.organizations[i].parent) {
             const parent = this.props.organizations[i].parent;
-            const splitArray = parent.split("/");
+            const splitArray = parent.split('/');
             const parent_id = splitArray[splitArray.length - 2];
-            if(parent_id  == child.toString()) 
-            {
+            if (parent_id === child.toString()) {
                 array.push(this.props.organizations[i]);
-                this.findChild(this.props.organizations[i].id,array);
+                this.findChild(this.props.organizations[i].id, array);
             }
         }
     }
   }
 
   findParent = (parent, array) => {
-   if(parent) {
-    const splitArray = parent.split("/");
+   if (parent) {
+    const splitArray = parent.split('/');
     const parent_id = splitArray[splitArray.length - 2];
-    for(let i = 0; i < this.props.organizations.length; i++) {
-            if(this.props.organizations[i].id.toString() == parent_id) {
-                if(this.props.organizations[i].id != this.props.organization.id) {
+    for (let i = 0; i < this.props.organizations.length; i++) {
+            if (this.props.organizations[i].id.toString() === parent_id) {
+                if (this.props.organizations[i].id !== this.props.organization.id) {
                     array.push(this.props.organizations[i]);
                 }
-                if(this.props.organizations[i].parent) {
-                    this.findParent( this.props.organizations[i].parent,array);
+                if (this.props.organizations[i].parent) {
+                    this.findParent(this.props.organizations[i].parent, array);
                 }
                 break;
             }
@@ -72,47 +71,47 @@ export default class OrganizationMap extends React.Component {
   }
 
   gatherOrganizationMap = () => {
-    let categories = [];
-    let parents = this.getParents(this.props.organization);
-    let childs = this.getChilds(this.props.organization);
-    let links = [];
+    const categories = [];
+    const parents = this.getParents(this.props.organization);
+    const childs = this.getChilds(this.props.organization);
+    const links = [];
 
     let organizationList = [];
     organizationList = organizationList.concat(parents);
     organizationList.push(this.props.organization);
     organizationList = organizationList.concat(childs);
 
-    for(let i = 0; i < organizationList.length; i++) {
+    for (let i = 0; i < organizationList.length; i++) {
         let found = false;
-        for(let x = 0; x < categories.length; x++) {
-            if(categories[x].label == organizationList[i].classification) {
+        for (let x = 0; x < categories.length; x++) {
+            if (categories[x].label === organizationList[i].classification) {
                 found = true;
             }
         }
-        if(!found) {
+        if (!found) {
          categories.push({
-            "id": `category-${organizationList[i].id}`,
-            "label": organizationList[i].classification,
-            "items": []
-         });          
+            'id': `category-${organizationList[i].id}`,
+            'label': organizationList[i].classification,
+            'items': []
+         });
         }
 
     }
-    
-        
-    for(let i = 0; i < organizationList.length; i++) {
-      for(let n = 0; n < categories.length; n++) {
-        if(categories[n].label == organizationList[i].classification) {
-            if(organizationList[i].id == this.props.organization.id) {
+
+
+    for (let i = 0; i < organizationList.length; i++) {
+      for (let n = 0; n < categories.length; n++) {
+        if (categories[n].label === organizationList[i].classification) {
+            if (organizationList[i].id === this.props.organization.id) {
                 categories[n].items.push({
-                "id": organizationList[i].id.toString(),
-                "label": organizationList[i].name,
-                "node": <Box colorIndex='neutral-1' pad={"small"}>{organizationList[i].name}</Box>
+                'id': organizationList[i].id.toString(),
+                'label': organizationList[i].name,
+                'node': <Box colorIndex='neutral-1' pad={"small"}>{organizationList[i].name}</Box>
                 });
             } else {
                 categories[n].items.push({
-                "id": organizationList[i].id.toString(),
-                "label": organizationList[i].name
+                'id': organizationList[i].id.toString(),
+                'label': organizationList[i].name
                 });
             }
             break;
@@ -120,23 +119,23 @@ export default class OrganizationMap extends React.Component {
       }
     }
 
-    for(let i = 0; i < organizationList.length; i++) {
-      if(organizationList[i].parent) {
+    for (let i = 0; i < organizationList.length; i++) {
+      if (organizationList[i].parent) {
         const parent = organizationList[i].parent;
         const organization = organizationList[i];
-        const splitArray = parent.split("/");
+        const splitArray = parent.split('/');
         const parent_id = splitArray[splitArray.length - 2];
-        for(let n = 0; n < categories.length; n++) {
-          for(let f = 0; f < categories[n].items.length; f++) {
-            if(categories[n].items[f].id == parent_id) {
-              links.push({"parentId" : parent_id.toString(), "childId" : organization.id.toString()})
+        for (let n = 0; n < categories.length; n++) {
+          for (let f = 0; f < categories[n].items.length; f++) {
+            if (categories[n].items[f].id === parent_id) {
+              links.push({'parentId': parent_id.toString(), 'childId': organization.id.toString()});
             }
           }
         }
       }
     }
-    return <Map onClick={() => this.openOrganization(this.state.selectedOrganization)} onActive={this.selectOrganization} active={this.state.selectedOrganization} vertical={false} data={{"categories" : categories, "links": links}} />;
-  
+    return <Map onClick={() => this.openOrganization(this.state.selectedOrganization)} onActive={this.selectOrganization} active={this.state.selectedOrganization} vertical={false} data={{'categories': categories, 'links': links}} />;
+
   }
 
   render () {
