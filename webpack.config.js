@@ -17,6 +17,11 @@ module.exports = {
     publicPath: '/'
   },
   resolve: {
+    alias: {
+      Components: path.resolve(__dirname, './src/app/components/'),
+      Actions: path.resolve(__dirname, './src/app/actions/' ),
+      Containers: path.resolve(__dirname, './src/app/actions/' )
+    },
     extensions: ['', '.scss', '.css', '.js', '.json'],
     modulesDirectories: [
       'node_modules',
