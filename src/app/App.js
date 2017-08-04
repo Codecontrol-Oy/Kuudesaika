@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import localization from './localization/index.js';
-import { connect } from 'react-redux';
 import theme from './theme/global.scss';
 import Application from 'grommet/components/App';
 import Header from 'grommet/components/Header';
@@ -15,26 +13,18 @@ export default class App extends Component {
     super(props);
   }
 
-  componentWillMount = () => {
-  
-  }
-
-  componentDidUpdate = () => {
-  
-  }
-
   render () {
     return (
       <MuiThemeProvider>
           <Application centered={false}>
             <Header size={"large"} className={theme.header}>
               <Anchor className={theme.headerTitle} href={"https://6aika.fi/kaupungit/helsinki/"} target={"_blank"}>#6Aika</Anchor>
-              <Heading align={"center"} strong={true} tag={"h1"} uppercase={true}>Decisions API React Client</Heading>
+              <Heading align={"center"} strong tag={"h1"} uppercase>Decisions API React Client</Heading>
             </Header>
             <Section className={theme.app}>
               {this.props.children}
             </Section>
-            <Footer size={"large"}  className={theme.footer}>
+            <Footer size={"large"} className={theme.footer}>
               <p>Footer</p>
             </Footer>
           </Application>

@@ -2,7 +2,7 @@ import * as constants from '../constants.js';
 const initialState = {};
 
 export default function reducer (state = initialState, action) {
-    switch(action.type) {
+    switch (action.type) {
         case constants.ORGANIZATION_FETCH: {
             return state;
         }

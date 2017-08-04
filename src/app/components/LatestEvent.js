@@ -1,27 +1,24 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import {browserHistory} from 'react-router';
 import PropTypes from 'prop-types';
 import Card from 'grommet/components/Card';
-import Label from 'grommet/components/Label';
 import Anchor from 'grommet/components/Anchor';
-import Timestamp from 'grommet/components/Timestamp';
-import axios from 'axios';
+
 export default class LatestEvent extends React.Component {
   constructor (props) {
     super(props);
   }
 
   onLinkAction = () => {
-    browserHistory.push("/organisaatio/" + this.props.organization.id);
+    browserHistory.push('/organisaatio/' + this.props.organization.id);
   }
 
   render () {
     return (
         <div>
-            <Card contentPad={"medium"} 
-                  style={{borderBottom: "2px solid #CCC"}}
-                  label={this.props.organization.data_source + "-" + this.props.organization.classification }
+            <Card contentPad={"medium"}
+                  style={{borderBottom: '2px solid #CCC'}}
+                  label={this.props.organization.data_source + '-' + this.props.organization.classification}
                   link={<Anchor onClick={() => this.onLinkAction()} >Siirry</Anchor>}
                   heading={this.props.organization.name} />
         </div>

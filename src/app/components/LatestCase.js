@@ -1,33 +1,26 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Card from 'grommet/components/Card';
 import Label from 'grommet/components/Label';
-import Anchor from 'grommet/components/Anchor';
-import Timestamp from 'grommet/components/Timestamp';
-import axios from 'axios';
 export default class LatestCase extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
         action: null
-    }
+    };
   }
 
   componentDidMount = () => {
   }
 
   render () {
-    if(this.state.action) {
-
-    }
     return (
         <div>
-            <Card contentPad={"medium"} 
-                  style={{borderBottom: "2px solid #CCC"}}
+            <Card contentPad={"medium"}
+                  style={{borderBottom: '2px solid #CCC'}}
                   label={this.props.register_id}
                   heading={this.props.subject}
-                  description={<Label announce={true}>{this.props.title}</Label>}/>
+                  description={<Label announce>{this.props.title}</Label>}/>
         </div>
     );
   }

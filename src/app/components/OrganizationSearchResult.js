@@ -1,7 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import ListItem from 'grommet/components/ListItem';
-import LatestEvent from './LatestEvent.js'
+import LatestEvent from './LatestEvent.js';
 import PropTypes from 'prop-types';
 
 export default class OrganizationSearchResult extends React.Component {
