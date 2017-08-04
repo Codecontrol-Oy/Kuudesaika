@@ -5,13 +5,11 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   context: __dirname,
-  devtool: 'inline-source-map',
   entry: [
-    'webpack-hot-middleware/client',
     './src/app/client.js'
   ],
   output: {
-    path: path.join(__dirname, 'build'),
+    path: path.join(__dirname, 'docs'),
     filename: 'bundle.js',
     publicPath: '/'
   },
@@ -59,7 +57,10 @@ module.exports = {
       filename: 'vendor.bundle.js',
       minChunks: Infinity
     }),
-    new webpack.HotModuleReplacementPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      include: /\.min\.js$/,
+      minimize: true
+    }),
     new webpack.NoErrorsPlugin()
   ]
 };

@@ -7,4 +7,4 @@ export {default as LatestEvent} from './LatestEvent.js';
 export {default as LatestEventList} from './LatestEventList.js';
 export {default as OrganizationSearch} from './OrganizationSearch.js';
 export {default as OrganizationSearchResult} from './OrganizationSearchResult.js';
-export {default as OrganizationMap} from './OrganizationMap.js'
+export {default as OrganizationMap} from './OrganizationMap.js';

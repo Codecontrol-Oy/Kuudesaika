@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import OrganizationCard from './OrganizationCard.js';
 import Tiles from 'grommet/components/Tiles';
 import PropTypes from 'prop-types';
@@ -11,16 +10,16 @@ export default class OrganizationCardList extends React.Component {
 
 
   render () {
-    let organizations = [];
-    
-    if(this.props.organizations) {
-        let orgs = this.props.organizations;
+    const organizations = [];
+
+    if (this.props.organizations) {
+        const orgs = this.props.organizations;
         orgs.sort((a, b) => b.events.length - a.events.length)
-            .map(function(org, i) {
-                if(i < 10) {
+            .map(function (org, i) {
+                if (i < 10) {
                  organizations.push(
-                    <OrganizationCard name={org.name} 
-                        classification={org.classification} 
+                    <OrganizationCard name={org.name}
+                        classification={org.classification}
                         id={org.id}
                         events={org.events}
                         posts={org.posts}
