@@ -4,6 +4,7 @@ import Map from 'grommet/components/Map';
 import Box from 'grommet/components/Box';
 import Section from 'grommet/components/Box';
 import {browserHistory} from 'react-router';
+import {getCity} from 'Actions';
 
 export default class OrganizationMap extends React.Component {
   constructor (props) {
@@ -15,7 +16,7 @@ export default class OrganizationMap extends React.Component {
 
   openOrganization = (id) => {
    if (id) {
-        browserHistory.push('/organisaatio/' + id);
+        browserHistory.push( id);
         window.location.reload();
    }
   }

@@ -39,5 +39,5 @@ LatestCase.propTypes = {
     register_id: PropTypes.string,
     function: PropTypes.string,
     attachments: PropTypes.array,
-    ç: PropTypes.string
+    subject: PropTypes.string
 };

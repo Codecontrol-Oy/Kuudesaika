@@ -18,14 +18,13 @@ export default class App extends Component {
       <MuiThemeProvider>
           <Application centered={false}>
             <Header size={"large"} className={theme.header}>
-              <Anchor className={theme.headerTitle} href={"https://6aika.fi/kaupungit/helsinki/"} target={"_blank"}>#6Aika</Anchor>
+              <Anchor className={theme.headerTitle} href={"https://6aika.fi/kaupungit"} target={"_blank"}>#6Aika</Anchor>
               <Heading align={"center"} strong tag={"h1"} uppercase>Decisions API React Client</Heading>
             </Header>
             <Section className={theme.app}>
               {this.props.children}
             </Section>
             <Footer size={"large"} className={theme.footer}>
-              <p>Footer</p>
             </Footer>
           </Application>
       </MuiThemeProvider>

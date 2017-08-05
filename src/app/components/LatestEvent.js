@@ -3,14 +3,14 @@ import {browserHistory} from 'react-router';
 import PropTypes from 'prop-types';
 import Card from 'grommet/components/Card';
 import Anchor from 'grommet/components/Anchor';
-
+import {getCity} from 'Actions';
 export default class LatestEvent extends React.Component {
   constructor (props) {
     super(props);
   }
 
   onLinkAction = () => {
-    browserHistory.push('/organisaatio/' + this.props.organization.id);
+    browserHistory.push(getCity() + '/organisaatio/' + this.props.organization.id);
   }
 
   render () {

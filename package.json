@@ -7,10 +7,12 @@
     "url": "https://github.com/Codecontrol-Oy/kuudesaika"
   },
   "jest": {
-    "setupFiles": ["./test/jestsetup.js"],
-      "snapshotSerializers": [
-        "<rootDir>/node_modules/enzyme-to-json/serializer"
-      ]
+    "setupFiles": [
+      "./test/jestsetup.js"
+    ],
+    "snapshotSerializers": [
+      "<rootDir>/node_modules/enzyme-to-json/serializer"
+    ]
   },
   "contributors": [
     {
@@ -90,23 +92,23 @@
     "axios-fileupload": "0.0.1",
     "babel-polyfill": "~6.23.0",
     "bluebird": "^3.5.0",
+    "blueimp-md5": "^2.6.0",
     "concat-stream": "^1.6.0",
     "copy-webpack-plugin": "~4.0.1",
+    "crypto": "0.0.3",
     "etherpad-lite-client": "~0.8.0",
+    "express-session": "^1.14.2",
     "fs-web": "^1.0.1",
     "grommet": "~1.5.0",
     "grommet-addons": "~0.4.0",
+    "image-webpack-loader": "^3.1.0",
+    "install": "^0.8.4",
     "jest": "~19.0.2",
     "jshashes": "^1.0.6",
     "json-loader": "~0.5.4",
     "koa": "~2.0.0",
-    "koa-convert": "~1.2.0",
-    "blueimp-md5": "^2.6.0",
-    "crypto": "0.0.3",
-    "express-session": "^1.14.2",
-    "image-webpack-loader": "^3.1.0",
-    "install": "^0.8.4",
     "koa-body": "^1.6.0",
+    "koa-convert": "~1.2.0",
     "koa-cors": "0.0.16",
     "koa-generic-session": "~1.11.4",
     "koa-passport": "~3.0.0-rc.2",
@@ -116,7 +118,6 @@
     "material-ui-pagination": "~1.0.1",
     "oauth": "~0.9.14",
     "passport-strategy": "~1.0.0",
-    "react-cookie": "~1.0.4",
     "react-copy-to-clipboard": "~4.2.3",
     "react-dropzone": "^3.13.1",
     "react-localization": "0.0.8",

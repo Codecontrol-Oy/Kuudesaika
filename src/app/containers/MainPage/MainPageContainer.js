@@ -5,10 +5,8 @@ import Section from 'grommet/components/Section';
 import Heading from 'grommet/components/Heading';
 import Split from 'grommet/components/Split';
 import Box from 'grommet/components/Box';
-import {OrganizationCardList, Loader, LatestCaseList, LatestEventList, OrganizationSearch} from '../../components';
-import {fetchOrganizations} from '../../actions/organizationActions.js';
-import {fetchLatest} from '../../actions/caseActions.js';
-import {fetchLatestEvents} from '../../actions/eventActions.js';
+import {OrganizationCardList, Loader, LatestCaseList, LatestEventList, OrganizationSearch} from 'Components';
+import {fetchLatest, fetchLatestEvents, fetchOrganizations,setCity} from 'Actions';
 
 @connect((store) => {
   return {
@@ -24,9 +22,11 @@ export default class MainPageContainer extends React.Component {
   }
 
   componentDidMount = () => {
+      setCity(this.props.params.city);
       fetchOrganizations();
       fetchLatest();
       fetchLatestEvents();
+      
   }
 
   render () {
