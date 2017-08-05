@@ -16,7 +16,7 @@ export default class OrganizationMap extends React.Component {
 
   openOrganization = (id) => {
    if (id) {
-        browserHistory.push( id);
+        browserHistory.push(id);
         window.location.reload();
    }
   }
