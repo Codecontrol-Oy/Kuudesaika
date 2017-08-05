@@ -1,6 +1,5 @@
 import React from 'react';
 import LatestCase from './LatestCase';
-import renderer from 'react-test-renderer';
 import Label from 'grommet/components/Label';
 
 describe("<LatestCase />", () => {
