@@ -16,6 +16,7 @@ import RejectedIcon from 'grommet/components/icons/base/Close';
 import ReturnedIcon from 'grommet/components/icons/base/Cycle';
 import Timestamp from 'grommet/components/Timestamp';
 import theme from '../theme/global.scss';
+
 export default class CaseMap extends React.Component {
   constructor (props) {
     super(props);
@@ -85,7 +86,7 @@ export default class CaseMap extends React.Component {
             'items': []
          });
         categories[0].items.push({
-                'id': this.props.currentCase.id.toString(),
+                'id': 'selected-' + this.props.currentCase.id.toString(),
                 'label': this.props.currentCase.register_id,
                 'node': <Box colorIndex='neutral-1' pad={"small"}>{this.props.currentCase.register_id}</Box>
                 });
@@ -96,7 +97,7 @@ export default class CaseMap extends React.Component {
         const organization = this.props.actions[i].event ? this.props.actions[i].event.organization : this.props.actions[i].post.organization;
         const startDate = isEventBased ? this.props.actions[i].event.start_date : this.props.actions[i].post.start_date;
         categories[1].items.push({
-                'id': this.props.actions[i].id.toString(),
+                'id': 'child-' + this.props.actions[i].id.toString(),
                 'label': isEventBased ? this.props.actions[i].event.organization.name : this.props.actions[i].post.organization.name,
                 'node': <Card colorIndex='neutral-4'
                               pad={"small"}
@@ -108,11 +109,10 @@ export default class CaseMap extends React.Component {
                         </Card>
                 });
     }
-               
-    for (let i = 0; i < categories[1].items.length; i++) {
-        links.push({'parentId': this.props.currentCase.id.toString(), 'childId': categories[1].items[i].id.toString()});
-    }
 
+    for(let i = 0; i < categories[1].items.length; i++) {
+        links.push({'parentId': `selected-${this.props.currentCase.id.toString()}`, 'childId': `${categories[1].items[i].id.toString()}`})
+    }
     return <Map onClick={() => this.openOrganization(this.state.selectedOrganization)} onActive={this.selectOrganization} active={this.state.selectedOrganization} vertical={false} data={{'categories': categories, 'links': links}} />;
 
   }
@@ -128,5 +128,7 @@ export default class CaseMap extends React.Component {
 }
 
 CaseMap.propTypes = {
-    currentCase: PropTypes.object
+    currentCase: PropTypes.object,
+    actions: PropTypes.array
 };
+
