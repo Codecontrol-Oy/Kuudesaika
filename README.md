@@ -27,3 +27,5 @@ The service will be published by default at port 8080. The app generates deep li
 ### Install with Docker
 1. docker pull codecontrol/kuudesaika
 1. docker run -itd -p 8080:8080 --name kuudesaika codecontrol/kuudesaika
+
+The app is using just basically React and Grommet. New features are easy to add with Grommet. For more info, see [Grommet demo](https://grommet.github.io/). Happy hacking!
