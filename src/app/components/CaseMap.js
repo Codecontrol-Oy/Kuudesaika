@@ -26,7 +26,7 @@ export default class CaseMap extends React.Component {
 
   openOrganization = (id) => {
    if (id) {
-        browserHistory.push(  `/${getCity()}/organisaatio/` + id);
+        browserHistory.push(`/${getCity()}/organisaatio/` + id);
         window.location.reload();
    }
   }
@@ -38,48 +38,49 @@ export default class CaseMap extends React.Component {
   }
 
   getResolution = (value) => {
-        switch(value) {
-            case "PASSED": {
-                return <Heading className={theme.marginTop} tag={"h4"} uppercase><CheckMarkIcon colorIndex={"ok"} /> Hyväksytty ehdotuksen mukaan</Heading>
+        switch (value) {
+            case 'PASSED': {
+                return <Heading className={theme.marginTop} tag={"h4"} uppercase><CheckMarkIcon colorIndex={"ok"} /> Hyväksytty ehdotuksen mukaan</Heading>;
             }
-            case "PASSED_MODIFIED": {
-                return <Heading className={theme.marginTop} tag={"h4"} uppercase><CheckMarkIcon colorIndex={"ok"} /> Hyväksytty esittelijän ehdotuksesta poiketen</Heading>
+            case 'PASSED_MODIFIED': {
+                return <Heading className={theme.marginTop} tag={"h4"} uppercase><CheckMarkIcon colorIndex={"ok"} /> Hyväksytty esittelijän ehdotuksesta poiketen</Heading>;
             }
-            case "PASSED_REVISED": {
-                return <Heading className={theme.marginTop} tag={"h4"} uppercase><CheckMarkIcon colorIndex={"ok"} /> Hyväksytty esittelijän muutetun ehdotuksen mukaan</Heading>
+            case 'PASSED_REVISED': {
+                return <Heading className={theme.marginTop} tag={"h4"} uppercase><CheckMarkIcon colorIndex={"ok"} /> Hyväksytty esittelijän muutetun ehdotuksen mukaan</Heading>;
             }
-            case "PASSED_VOTED": {
-                return <Heading className={theme.marginTop} tag={"h4"} uppercase><CheckMarkIcon colorIndex={"ok"} /> Hyväksytty ehdotuksen mukaan äänestyksin</Heading>
+            case 'PASSED_VOTED': {
+                return <Heading className={theme.marginTop} tag={"h4"} uppercase><CheckMarkIcon colorIndex={"ok"} /> Hyväksytty ehdotuksen mukaan äänestyksin</Heading>;
             }
-            case "": {
-                return <Heading className={theme.marginTop} tag={"h4"} uppercase><InformationIcon colorIndex={"unknown"} /> Ei tietoa päätöksestä</Heading>
+            case '': {
+                return <Heading className={theme.marginTop} tag={"h4"} uppercase><InformationIcon colorIndex={"unknown"} /> Ei tietoa päätöksestä</Heading>;
             }
-            case "NOTED": {
-                return <Heading className={theme.marginTop} tag={"h4"} uppercase><InformationIcon colorIndex={"unknown"} /> Merkittiin tiedoksi</Heading>
+            case 'NOTED': {
+                return <Heading className={theme.marginTop} tag={"h4"} uppercase><InformationIcon colorIndex={"unknown"} /> Merkittiin tiedoksi</Heading>;
             }
-            case "TABLED": {
-                return <Heading className={theme.marginTop} tag={"h4"} uppercase><ArchivedIcon colorIndex={"unknown"} /> Pöydätty</Heading>
+            case 'TABLED': {
+                return <Heading className={theme.marginTop} tag={"h4"} uppercase><ArchivedIcon colorIndex={"unknown"} /> Pöydätty</Heading>;
             }
-            case "REJECTED": {
-                return <Heading className={theme.marginTop} tag={"h4"} uppercase><RejectedIcon colorIndex={"critical"} /> Hylätty</Heading>
+            case 'REJECTED': {
+                return <Heading className={theme.marginTop} tag={"h4"} uppercase><RejectedIcon colorIndex={"critical"} /> Hylätty</Heading>;
             }
-            case "RETURNED": {
-                return <Heading className={theme.marginTop} tag={"h4"} uppercase><ReturnedIcon colorIndex={"warning"} /> Palautettu</Heading>
+            case 'RETURNED': {
+                return <Heading className={theme.marginTop} tag={"h4"} uppercase><ReturnedIcon colorIndex={"warning"} /> Palautettu</Heading>;
             }
+            default:
+                return <Heading className={theme.marginTop} tag={"h4"} uppercase><ReturnedIcon colorIndex={"warning"} />-</Heading>;
         }
   }
 
   gatherCaseMap = () => {
     const categories = [];
     const links = [];
-    console.log(this.props.actions);
     categories.push({
-            'id': `category-original`,
+            'id': 'category-original',
             'label': 'Asia',
             'items': []
          });
     categories.push({
-            'id': `category-sections`,
+            'id': 'category-sections',
             'label': 'Käsittelypisteet',
             'items': []
          });
@@ -89,28 +90,27 @@ export default class CaseMap extends React.Component {
                 'node': <Box colorIndex='neutral-1' pad={"small"}>{this.props.currentCase.register_id}</Box>
                 });
 
-         
-    for(let i = 0; i < this.props.actions.length; i++) {
+    for (let i = 0; i < this.props.actions.length; i++) {
 
         const isEventBased = this.props.actions[i].event ? true : false;
-        const organization = this.props.actions[i].event ? this.props.actions[i].event.organization : this.props.actions[i].post.organization
-        const status = null;
-        const startDate = isEventBased ? this.props.actions[i].event.start_date : this.props.actions[i].post.start_date
+        const organization = this.props.actions[i].event ? this.props.actions[i].event.organization : this.props.actions[i].post.organization;
+        const startDate = isEventBased ? this.props.actions[i].event.start_date : this.props.actions[i].post.start_date;
         categories[1].items.push({
                 'id': this.props.actions[i].id.toString(),
                 'label': isEventBased ? this.props.actions[i].event.organization.name : this.props.actions[i].post.organization.name,
-                'node': <Card colorIndex='neutral-4' 
+                'node': <Card colorIndex='neutral-4'
                               pad={"small"}
                               label={organization.classification}
                               heading={organization.name}
-                              description={<Section>{startDate  && <b><Timestamp fields={"date"} value={startDate}/></b>}<Article>{this.props.actions[i].title}</Article><Article>{this.getResolution(this.props.actions[i].resolution)}</Article></Section>}
+                              description={<Section>{startDate && <b><Timestamp fields={"date"} value={startDate}/></b>}<Article>{this.props.actions[i].title}</Article><Article>{this.getResolution(this.props.actions[i].resolution)}</Article></Section>}
                               link={<Anchor onClick={() => this.openOrganization(this.state.selectedOrganization)} label={"siirry organisaatioon"} />}
                               >
                         </Card>
                 });
     }
-    for(let i = 0; i < categories[1].items.length; i++) {
-        links.push({'parentId': this.props.currentCase.id.toString(), 'childId': categories[1].items[i].id.toString()})
+               
+    for (let i = 0; i < categories[1].items.length; i++) {
+        links.push({'parentId': this.props.currentCase.id.toString(), 'childId': categories[1].items[i].id.toString()});
     }
 
     return <Map onClick={() => this.openOrganization(this.state.selectedOrganization)} onActive={this.selectOrganization} active={this.state.selectedOrganization} vertical={false} data={{'categories': categories, 'links': links}} />;
@@ -128,5 +128,5 @@ export default class CaseMap extends React.Component {
 }
 
 CaseMap.propTypes = {
-    currentCase: PropTypes.object,
+    currentCase: PropTypes.object
 };

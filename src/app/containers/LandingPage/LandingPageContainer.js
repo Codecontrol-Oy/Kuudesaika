@@ -19,10 +19,6 @@ export default class LandingPageContainer extends React.Component {
     browserHistory.push(`/${value}`);
   }
 
-  componentDidMount = () => {
-      console.log("inside");
-  }
-
   render () {
     return (
         <Section>

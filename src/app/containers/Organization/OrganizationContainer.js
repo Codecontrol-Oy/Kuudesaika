@@ -69,7 +69,6 @@ export default class OrganizationContainer extends React.Component {
   fetchMore = () => {
     let offset = this.state.offset;
     offset = offset + 5;
-    console.log(offset + ' temp value');
     this.setState({offset}, this.fetchEvents(this.props.organization.selected_organization));
   }
 

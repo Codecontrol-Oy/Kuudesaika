@@ -10,7 +10,7 @@ import Timestamp from 'grommet/components/Timestamp';
 import Accordion from 'grommet/components/Accordion';
 import AccordionPanel from 'grommet/components/AccordionPanel';
 import Heading from 'grommet/components/Heading';
-import { OrganizationMap, Loader, CaseMap } from 'Components';
+import { CaseGeo, Loader, CaseMap } from 'Components';
 import {browserHistory} from 'react-router';
 import { fetchLatest, fetchCase, setCity, getCity } from 'Actions';
 
@@ -45,16 +45,10 @@ export default class CaseContainer extends React.Component {
 
 	componentDidUpdate = () => {
 		const selected_case = this.state.selected_case || this.props.selected_case;
-		console.log(selected_case);
 		if (selected_case && !this.state.fetchStarted) {
-			console.log(selected_case);
 			this.setState({ fetchStarted: true }, function () {
 				if (selected_case.actions && selected_case.actions.length > 0) {
 					this.fetchActions(selected_case);
-				}
-				if (selected_case.geometries && selected_case.geometries.length > 0) {
-					console.log('---- GEOMETRIES ----');
-					console.log(selected_case.geometries);
 				}
 			});
 		}
@@ -106,7 +100,6 @@ export default class CaseContainer extends React.Component {
 			axios.get(action)
 				.then(function (actionResponse) {
 					const currentAction = actionResponse.data;
-
 					if (currentAction.event) {
 						axios.get(currentAction.event)
 							.then(function (eventResponse) {
@@ -179,8 +172,17 @@ export default class CaseContainer extends React.Component {
 							: <Label>Ei liitteitä</Label>
 						: <Loader />
 						}
+						{(selected_case.geometries && selected_case.geometries.length)
+						&& <Section>
+							<Heading className={theme.marginTop} tag={"h4"} uppercase>Aluetiedot</Heading>
+							<CaseGeo geometries={selected_case.geometries} />
+						</Section>}
 						<Heading className={theme.marginTop} tag={"h4"} uppercase>Asiaprosessi</Heading>
-						{!pending ? <CaseMap actions={this.state.actions} currentCase={this.state.selected_case}  /> : <Loader /> }
+						{!pending
+						? this.state.actions && <CaseMap actions={this.state.actions} currentCase={this.state.selected_case} />
+						: <Loader />
+						}
+
 					</Section>
 					: <Loader />
 				}
