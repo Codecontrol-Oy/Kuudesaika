@@ -9,11 +9,11 @@ import Heading from 'grommet/components/Heading';
 import Anchor from 'grommet/components/Anchor';
 import {browserHistory} from 'react-router';
 import {getCity} from 'Actions';
-import CheckMarkIcon from 'grommet/components/icons/base/checkmark';
-import InformationIcon from 'grommet/components/icons/base/circleInformation';
-import ArchivedIcon from 'grommet/components/icons/base/archive';
-import RejectedIcon from 'grommet/components/icons/base/close';
-import ReturnedIcon from 'grommet/components/icons/base/cycle';
+import CheckMarkIcon from 'grommet/components/icons/base/Checkmark';
+import InformationIcon from 'grommet/components/icons/base/CircleInformation';
+import ArchivedIcon from 'grommet/components/icons/base/Archive';
+import RejectedIcon from 'grommet/components/icons/base/Close';
+import ReturnedIcon from 'grommet/components/icons/base/Cycle';
 import Timestamp from 'grommet/components/Timestamp';
 import theme from '../theme/global.scss';
 export default class CaseMap extends React.Component {
