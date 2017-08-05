@@ -127,6 +127,7 @@ export default class OrganizationContainer extends React.Component {
       }
       return postListing;
   }
+
   fetchEvents = (organization) => {
     let offset = 0;
     if (this.state.events) {

@@ -5,7 +5,7 @@ import { render } from 'react-dom';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 import { syncHistoryWithStore} from 'react-router-redux';
 import App from './App.js';
-import {MainPageContainer, PageNotFoundContainer, OrganizationContainer, LandingPageContainer} from './containers';
+import {MainPageContainer, PageNotFoundContainer, OrganizationContainer, LandingPageContainer, CaseContainer} from './containers';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import { Provider } from 'react-redux';
 import store from './store';
@@ -25,6 +25,7 @@ render((
                 <IndexRoute component={LandingPageContainer} />
                 <Route path=":city" component={MainPageContainer} />
                 <Route path=":city/organisaatio/:id" component={OrganizationContainer} />
+                <Route path=":city/asia/:id" component={CaseContainer} />
                 <Route path="*" component={PageNotFoundContainer} />
             </Route>
 
