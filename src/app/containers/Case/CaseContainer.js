@@ -10,7 +10,7 @@ import Timestamp from 'grommet/components/Timestamp';
 import Accordion from 'grommet/components/Accordion';
 import AccordionPanel from 'grommet/components/AccordionPanel';
 import Heading from 'grommet/components/Heading';
-import {Loader} from 'Components';
+import { OrganizationMap, Loader, CaseMap } from 'Components';
 import {browserHistory} from 'react-router';
 import { fetchLatest, fetchCase, setCity, getCity } from 'Actions';
 
@@ -154,7 +154,7 @@ export default class CaseContainer extends React.Component {
 		return (
 			<Section>
 				{selected_case && cases
-					? <div>
+					? <Section>
 						<Heading tag={"h3"} uppercase className={theme.sectionTitle}>
 							{selected_case.title}
 						<Article><Label>{selected_case.function.name}</Label></Article>
@@ -179,7 +179,9 @@ export default class CaseContainer extends React.Component {
 							: <Label>Ei liitteitä</Label>
 						: <Loader />
 						}
-					</div>
+						<Heading className={theme.marginTop} tag={"h4"} uppercase>Asiaprosessi</Heading>
+						{!pending ? <CaseMap actions={this.state.actions} currentCase={this.state.selected_case}  /> : <Loader /> }
+					</Section>
 					: <Loader />
 				}
 			</Section>
