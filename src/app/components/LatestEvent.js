@@ -11,7 +11,7 @@ export default class LatestEvent extends React.Component {
   }
 
   onLinkAction = () => {
-    browserHistory.push(getCity() + '/organisaatio/' + this.props.organization.id);
+    browserHistory.push(`/${getCity()}/organisaatio/` + this.props.organization.id);
   }
 
   render () {

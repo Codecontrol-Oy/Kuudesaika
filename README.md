@@ -22,7 +22,7 @@ This takes a while.
 
 The service will be published by default at port 8080. The app generates deep links to documents dynamically from the data you donwload. If you were to want to make a version of the app that uses static html files, even a local web server would not be required.
 
-6. Open localhost port 80: http://localhost:8080
+6. Open localhost port 8080: http://localhost:8080
 
 ### Install with Docker
 1. docker pull codecontrol/kuudesaika

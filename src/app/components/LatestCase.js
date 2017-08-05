@@ -15,7 +15,7 @@ export default class LatestCase extends React.Component {
   }
 
 onLinkAction = () => {
-    browserHistory.push(getCity() + '/asia/' + this.props.id);
+    browserHistory.push(`/${getCity()}/asia/` + this.props.id);
   }
 
   render () {

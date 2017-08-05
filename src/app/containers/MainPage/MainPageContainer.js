@@ -6,7 +6,7 @@ import Heading from 'grommet/components/Heading';
 import Split from 'grommet/components/Split';
 import Box from 'grommet/components/Box';
 import {OrganizationCardList, Loader, LatestCaseList, LatestEventList, OrganizationSearch} from 'Components';
-import {fetchLatest, fetchLatestEvents, fetchOrganizations,setCity} from 'Actions';
+import {fetchLatest, fetchLatestEvents, fetchOrganizations, setCity} from 'Actions';
 
 @connect((store) => {
   return {
@@ -26,7 +26,6 @@ export default class MainPageContainer extends React.Component {
       fetchOrganizations();
       fetchLatest();
       fetchLatestEvents();
-      
   }
 
   render () {
