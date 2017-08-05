@@ -1,3 +1,20 @@
+# Pre-release of a technical proto for 6aika Decisions API React Client.
+
+## Install Instructions
+### Install with NPM
+
+git clone https://github.com/Codecontrol-Oy/Kuudesaika
+cd Kuudesaika
+npm install
+npm start
+
+The service will be published by default at port 8080.
+
+### Install with Docker
+docker pull codecontrol/kuudesaika
+docker run -itd -p:8080:8080 --name kuudesaika codecontrol/kuudesaika
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
