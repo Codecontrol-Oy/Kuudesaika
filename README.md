@@ -3,16 +3,16 @@
 ## Install Instructions
 ### Install with NPM
 
-git clone https://github.com/Codecontrol-Oy/Kuudesaika
-cd Kuudesaika
-npm install
-npm start
+1. git clone https://github.com/Codecontrol-Oy/Kuudesaika
+1. cd Kuudesaika
+1. npm install
+1. npm start
 
 The service will be published by default at port 8080.
 
 ### Install with Docker
-docker pull codecontrol/kuudesaika
-docker run -itd -p:8080:8080 --name kuudesaika codecontrol/kuudesaika
+1. docker pull codecontrol/kuudesaika
+1. docker run -itd -p:8080:8080 --name kuudesaika codecontrol/kuudesaika
 
 
 ## Configuration Instructions
