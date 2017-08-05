@@ -16,7 +16,6 @@ import RejectedIcon from 'grommet/components/icons/base/close';
 import ReturnedIcon from 'grommet/components/icons/base/cycle';
 import Timestamp from 'grommet/components/Timestamp';
 import theme from '../theme/global.scss';
-
 export default class CaseMap extends React.Component {
   constructor (props) {
     super(props);
@@ -27,7 +26,7 @@ export default class CaseMap extends React.Component {
 
   openOrganization = (id) => {
    if (id) {
-        browserHistory.push(id);
+        browserHistory.push(  `/${getCity()}/organisaatio/` + id);
         window.location.reload();
    }
   }
@@ -104,7 +103,7 @@ export default class CaseMap extends React.Component {
                               pad={"small"}
                               label={organization.classification}
                               heading={organization.name}
-                              description={<Section>{startDate  && <Timestamp fields={"date"} value={startDate}/>}<Article>{this.getResolution(this.props.actions[i].resolution)}</Article></Section>}
+                              description={<Section>{startDate  && <b><Timestamp fields={"date"} value={startDate}/></b>}<Article>{this.props.actions[i].title}</Article><Article>{this.getResolution(this.props.actions[i].resolution)}</Article></Section>}
                               link={<Anchor onClick={() => this.openOrganization(this.state.selectedOrganization)} label={"siirry organisaatioon"} />}
                               >
                         </Card>
