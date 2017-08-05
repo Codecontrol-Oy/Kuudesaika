@@ -26,7 +26,7 @@ The service will be published by default at port 8080. The app generates deep li
 
 ### Install with Docker
 1. docker pull codecontrol/kuudesaika
-1. docker run -itd -p:8080:8080 --name kuudesaika codecontrol/kuudesaika
+1. docker run -itd -p 8080:8080 --name kuudesaika codecontrol/kuudesaika
 
 
 ## Configuration Instructions
