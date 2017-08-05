@@ -1,7 +1,6 @@
 import React from 'react';
 import OrganizationSearchResult from './OrganizationSearchResult';
 import mock from '../../../mock/Organization.json';
-import Article from 'grommet/components/Article';
 
 describe('<OrganizationSearchResults />', () => {
 
