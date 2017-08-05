@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LatestEvent /> Matches snapshot 1`] = `
+<div>
+  <Card
+    a11yTitle="Card"
+    contentPad="medium"
+    heading="Kaupunginhallitus"
+    headingStrong={true}
+    label="helsinki-Hallitus"
+    link={
+      <Anchor
+        animateIcon={true}
+        method="push"
+        onClick={[Function]}
+        tag="a"
+      >
+        Siirry
+      </Anchor>
+    }
+    style={
+      Object {
+        "borderBottom": "2px solid #CCC",
+      }
+    }
+    textSize="small"
+  />
+</div>
+`;

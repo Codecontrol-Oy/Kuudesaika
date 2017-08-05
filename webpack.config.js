@@ -19,7 +19,8 @@ module.exports = {
     alias: {
       Components: path.resolve(__dirname, './src/app/components/'),
       Actions: path.resolve(__dirname, './src/app/actions/'),
-      Containers: path.resolve(__dirname, './src/app/actions/')
+      Containers: path.resolve(__dirname, './src/app/actions/'),
+      Mocks: path.resolve(__dirname, './mock/')
     },
     extensions: ['', '.scss', '.css', '.js', '.json'],
     modulesDirectories: [
