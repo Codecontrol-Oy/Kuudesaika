@@ -32,7 +32,7 @@ describe("<LatestCase />", () => {
                     modified_at={"2017-01-1T10:00:00.00000Z"}
                     origin_id={"1"}
                     title={"Test case"}
-                    register_id={"CASE 12345-1"}
+                    register_id={"CASE 12345-1"} 
                     function={null}
                     attachments={null} />);
         expect(latestCase.find('Card').length).toEqual(1);

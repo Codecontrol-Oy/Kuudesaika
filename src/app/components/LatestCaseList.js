@@ -9,14 +9,13 @@ export default class LatestCaseList extends React.Component {
     this.state = {
         latest_cases: []
     };
-    self = this;
   }
 
   componentDidMount = () => {
-      this.onFetchFunctions();
+      this.onFetchFunctions(this);
   }
 
-  onFetchFunctions = () => {
+  onFetchFunctions = (self) => {
     if (this.props.latestCases) {
         this.props.latestCases.map(function (obj) {
             axios.get(obj.function)
