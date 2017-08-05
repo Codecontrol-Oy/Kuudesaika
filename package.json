@@ -25,6 +25,11 @@
       "email": "samuli.polvi@codecontrol.fi",
       "url": "https://github.com/SamuliPolvi"
     }
+    {
+      "name": "Jaakko Korhonen",
+      "email": "jaakko@okf.fi",
+      "url": "https://github.com/jaakkokorhonen"
+    }
   ],
   "repository": {
     "type": "git",
