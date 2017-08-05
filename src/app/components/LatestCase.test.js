@@ -53,7 +53,7 @@ describe("<LatestCase />", () => {
                     attachments={null}
                     subject={"Test subject"} />);
         expect(latestCase.find('Card').prop("label")).toEqual("CASE 12345-1");
-        expect(latestCase.find('Card').props().description).toEqual(<Label>Test case</Label>);
+        expect(latestCase.find('Card').props().description).toEqual(<Label announce>Test case</Label>);
         expect(latestCase.find('Card').props().heading).toEqual("Test subject");
     });
 
