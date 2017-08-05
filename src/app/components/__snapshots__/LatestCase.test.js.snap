@@ -7,6 +7,7 @@ exports[`<LatestCase /> Matches snapshot 1`] = `
     contentPad="medium"
     description={
       <Label
+        announce={true}
         size="medium"
       >
         Test case
@@ -14,6 +15,16 @@ exports[`<LatestCase /> Matches snapshot 1`] = `
     }
     headingStrong={true}
     label="CASE 12345-1"
+    link={
+      <Anchor
+        animateIcon={true}
+        method="push"
+        onClick={[Function]}
+        tag="a"
+      >
+        Siirry
+      </Anchor>
+    }
     style={
       Object {
         "borderBottom": "2px solid #CCC",

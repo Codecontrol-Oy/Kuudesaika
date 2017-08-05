@@ -19,6 +19,5 @@ export default class OrganizationSearchResult extends React.Component {
 }
 
 OrganizationSearchResult.propTypes = {
-  onClick: PropTypes.func,
   organization: PropTypes.object
 };

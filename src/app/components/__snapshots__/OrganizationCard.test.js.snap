@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<OrganizationCard /> should match snapshot 1`] = `
+<Card
+  a11yTitle="Card"
+  contentPad="medium"
+  flex="grow"
+  heading="Kaupunginhallitus"
+  headingStrong={true}
+  label="helsinki - Hallitus"
+  link={
+    <Anchor
+      animateIcon={true}
+      label="siirry"
+      method="push"
+      onClick={[Function]}
+      tag="a"
+    />
+  }
+  textSize="small"
+  thumbnail={
+    <Image
+      alt="temporary image"
+      size="medium"
+      src="http://lorempixel.com/640/480/people?106"
+    />
+  }
+/>
+`;

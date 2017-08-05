@@ -7,12 +7,6 @@ import {browserHistory} from 'react-router';
 import PropTypes from 'prop-types';
 import {getCity} from 'Actions';
 
-@connect((store) => {
-  return {
-    organization: store.organization
-  };
-})
-
 export default class OrganizationCard extends React.Component {
   constructor (props) {
     super(props);
@@ -24,7 +18,8 @@ export default class OrganizationCard extends React.Component {
 
   render () {
     return (
-        <Card flex={"grow"} label={this.props.data_source + ' - ' + this.props.classification}
+        <Card flex={"grow"} 
+              label={this.props.data_source + ' - ' + this.props.classification}
               heading={this.props.name}
               thumbnail={<Image alt={"temporary image"} src={'http://lorempixel.com/640/480/people?' + this.props.id} />}
               headingStrong

@@ -3,8 +3,8 @@ import LatestCaseList from './LatestCaseList';
 import Label from 'grommet/components/Label';
 import mock from '../../../mock/Case.json';
 import axios from 'axios';
+import sinon from 'sinon';
 import {get} from 'axios';
-import MockAdapter from 'axios-mock-adapter';
 
 describe("<LatestCaseList />", () => {
     it("Matches snapshot", () => {
@@ -14,19 +14,15 @@ describe("<LatestCaseList />", () => {
         expect(latestCaseList).toMatchSnapshot();
     });
 
-    it('should contain correct elements', () => {
-
-        var axios_mock = new MockAdapter(axios);
-        axios_mock.onGet().reply(200, mock.function);
-
+    it('should contain three LatestCase elements', () => {
+        const promise = Promise.resolve(mock.function);
+        sinon.stub(axios, 'get').callsFake(() => promise)
         const latestCaseList = mount(
             <LatestCaseList latestCases={mock.cases} />
         );
-        latestCaseList.update();
-        setTimeout(()=>{
+        return promise.then(() => {
             expect(latestCaseList.find("LatestCase").length).toEqual(3);
-            done();
-        },1000)
+        })   
     });
 
 })

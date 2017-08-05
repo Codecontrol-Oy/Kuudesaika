@@ -6,7 +6,6 @@ import Article from 'grommet/components/Article';
 import OrganizationSearchResult from './OrganizationSearchResult.js';
 import PropTypes from 'prop-types';
 
-
 export default class OrganizationSearch extends React.Component {
   constructor (props) {
     super(props);
@@ -24,20 +23,17 @@ export default class OrganizationSearch extends React.Component {
       for (let i = 0; i < this.props.organizations.length - 1; i++) {
           const resultsFound = this.props.organizations[i].name.toLowerCase().includes(event.target.value.toLowerCase());
           if (resultsFound) {
-                  Results.push(<OrganizationSearchResult organization={this.props.organizations[i]} />);
+                  Results.push(<OrganizationSearchResult key={Results.length + 1} organization={this.props.organizations[i]} />);
           }
       }
     } else {
       searchStarted = false;
     }
     if (Results.length > 0) {
-        console.log('jee results');
         this.setState({searchResults: <List>{Results}</List>, searchStarted});
     } else {
-        console.log('Ei tuloksia :(');
         this.setState({searchResults: null, searchStarted});
     }
-
   }
   render () {
 

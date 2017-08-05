@@ -1,0 +1,494 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<OrganizationSearch /> Should match snapshot 1`] = `
+<OrganizationSearch
+  organizations={
+    Array [
+      Object {
+        "classification": "Kaupunki",
+        "created_at": "2017-05-05T06:12:49.768550Z",
+        "data_source": "helsinki",
+        "dissolution_date": null,
+        "events": Array [],
+        "founding_date": null,
+        "id": 1,
+        "modified_at": "2017-05-05T06:12:49.768610Z",
+        "name": "Helsingin kaupunki",
+        "origin_id": "00001",
+        "parent": null,
+        "posts": Array [],
+        "url": "https://paatos-helsinki.6aika.fi/v1/organization/1/",
+      },
+      Object {
+        "classification": "Virasto",
+        "created_at": "2017-05-05T06:12:49.780760Z",
+        "data_source": "helsinki",
+        "dissolution_date": "2013-12-31",
+        "events": Array [],
+        "founding_date": null,
+        "id": 2,
+        "modified_at": "2017-05-05T06:12:49.780799Z",
+        "name": "Hallintokeskus",
+        "origin_id": "01101",
+        "parent": null,
+        "posts": Array [],
+        "url": "https://paatos-helsinki.6aika.fi/v1/organization/2/",
+      },
+      Object {
+        "classification": "Osasto",
+        "created_at": "2017-05-05T06:12:49.788757Z",
+        "data_source": "helsinki",
+        "dissolution_date": "2013-12-31",
+        "events": Array [],
+        "founding_date": null,
+        "id": 3,
+        "modified_at": "2017-05-05T06:12:49.788791Z",
+        "name": "Hallinto-osasto/Halke",
+        "origin_id": "011010",
+        "parent": null,
+        "posts": Array [],
+        "url": "https://paatos-helsinki.6aika.fi/v1/organization/3/",
+      },
+      Object {
+        "classification": "Osasto",
+        "created_at": "2017-05-05T06:12:49.798209Z",
+        "data_source": "helsinki",
+        "dissolution_date": "2013-12-31",
+        "events": Array [],
+        "founding_date": null,
+        "id": 4,
+        "modified_at": "2017-05-05T06:12:49.798244Z",
+        "name": "Kansainvälinen toiminta",
+        "origin_id": "011013",
+        "parent": null,
+        "posts": Array [],
+        "url": "https://paatos-helsinki.6aika.fi/v1/organization/4/",
+      },
+      Object {
+        "classification": "Osasto",
+        "created_at": "2017-05-05T06:12:49.807400Z",
+        "data_source": "helsinki",
+        "dissolution_date": "2013-12-31",
+        "events": Array [],
+        "founding_date": null,
+        "id": 5,
+        "modified_at": "2017-05-05T06:12:49.807434Z",
+        "name": "Viestintä",
+        "origin_id": "011016",
+        "parent": null,
+        "posts": Array [],
+        "url": "https://paatos-helsinki.6aika.fi/v1/organization/5/",
+      },
+      Object {
+        "classification": "Osasto",
+        "created_at": "2017-05-05T06:12:49.819356Z",
+        "data_source": "helsinki",
+        "dissolution_date": "2013-12-31",
+        "events": Array [],
+        "founding_date": null,
+        "id": 6,
+        "modified_at": "2017-05-05T06:12:49.819418Z",
+        "name": "Oikeuspalvelut",
+        "origin_id": "011030",
+        "parent": null,
+        "posts": Array [],
+        "url": "https://paatos-helsinki.6aika.fi/v1/organization/6/",
+      },
+      Object {
+        "classification": "Virasto",
+        "created_at": "2017-05-05T06:12:49.828239Z",
+        "data_source": "helsinki",
+        "dissolution_date": "2013-12-31",
+        "events": Array [],
+        "founding_date": null,
+        "id": 7,
+        "modified_at": "2017-05-05T06:12:49.828294Z",
+        "name": "Talous- ja suunnittelukeskus",
+        "origin_id": "01500",
+        "parent": null,
+        "posts": Array [],
+        "url": "https://paatos-helsinki.6aika.fi/v1/organization/7/",
+      },
+      Object {
+        "classification": "Osasto",
+        "created_at": "2017-05-05T06:12:49.839674Z",
+        "data_source": "helsinki",
+        "dissolution_date": "2013-12-31",
+        "events": Array [],
+        "founding_date": null,
+        "id": 8,
+        "modified_at": "2017-05-05T06:12:49.839712Z",
+        "name": "Taloussuunnittelu- ja varainhallintaosasto",
+        "origin_id": "015100",
+        "parent": null,
+        "posts": Array [],
+        "url": "https://paatos-helsinki.6aika.fi/v1/organization/8/",
+      },
+      Object {
+        "classification": "Osasto",
+        "created_at": "2017-05-05T06:12:49.848798Z",
+        "data_source": "helsinki",
+        "dissolution_date": "2013-12-31",
+        "events": Array [],
+        "founding_date": null,
+        "id": 9,
+        "modified_at": "2017-05-05T06:12:49.848833Z",
+        "name": "Kehittämisosasto",
+        "origin_id": "015200",
+        "parent": null,
+        "posts": Array [],
+        "url": "https://paatos-helsinki.6aika.fi/v1/organization/9/",
+      },
+      Object {
+        "classification": "Osasto",
+        "created_at": "2017-05-05T06:12:49.862629Z",
+        "data_source": "helsinki",
+        "dissolution_date": "2013-12-31",
+        "events": Array [],
+        "founding_date": null,
+        "id": 10,
+        "modified_at": "2017-05-05T06:12:49.862700Z",
+        "name": "Sisäinen tarkastus",
+        "origin_id": "015300",
+        "parent": null,
+        "posts": Array [],
+        "url": "https://paatos-helsinki.6aika.fi/v1/organization/10/",
+      },
+      Object {
+        "classification": "Osasto",
+        "created_at": "2017-05-05T06:12:49.875552Z",
+        "data_source": "helsinki",
+        "dissolution_date": "2013-12-31",
+        "events": Array [],
+        "founding_date": null,
+        "id": 11,
+        "modified_at": "2017-05-05T06:12:49.875623Z",
+        "name": "Tietotekniikkaosasto",
+        "origin_id": "015400",
+        "parent": null,
+        "posts": Array [],
+        "url": "https://paatos-helsinki.6aika.fi/v1/organization/11/",
+      },
+      Object {
+        "classification": "Osasto",
+        "created_at": "2017-05-05T06:12:49.889101Z",
+        "data_source": "helsinki",
+        "dissolution_date": "2013-12-31",
+        "events": Array [],
+        "founding_date": null,
+        "id": 12,
+        "modified_at": "2017-05-05T06:12:49.889168Z",
+        "name": "Varainhallinta",
+        "origin_id": "015500",
+        "parent": null,
+        "posts": Array [],
+        "url": "https://paatos-helsinki.6aika.fi/v1/organization/12/",
+      },
+      Object {
+        "classification": "Osasto",
+        "created_at": "2017-05-05T06:12:49.902636Z",
+        "data_source": "helsinki",
+        "dissolution_date": "2013-12-31",
+        "events": Array [],
+        "founding_date": null,
+        "id": 13,
+        "modified_at": "2017-05-05T06:12:49.902703Z",
+        "name": "Elinkeinopalvelu",
+        "origin_id": "015600",
+        "parent": null,
+        "posts": Array [],
+        "url": "https://paatos-helsinki.6aika.fi/v1/organization/13/",
+      },
+      Object {
+        "classification": "Virasto",
+        "created_at": "2017-05-05T06:12:49.921509Z",
+        "data_source": "helsinki",
+        "dissolution_date": "2013-12-31",
+        "events": Array [],
+        "founding_date": null,
+        "id": 14,
+        "modified_at": "2017-05-05T06:12:49.921550Z",
+        "name": "Henkilöstökeskus",
+        "origin_id": "01800",
+        "parent": null,
+        "posts": Array [],
+        "url": "https://paatos-helsinki.6aika.fi/v1/organization/14/",
+      },
+      Object {
+        "classification": "Osasto",
+        "created_at": "2017-05-05T06:12:49.933902Z",
+        "data_source": "helsinki",
+        "dissolution_date": "2013-12-31",
+        "events": Array [],
+        "founding_date": null,
+        "id": 15,
+        "modified_at": "2017-05-05T06:12:49.933951Z",
+        "name": "Henkilöstöpolitiikkaosasto",
+        "origin_id": "018010",
+        "parent": null,
+        "posts": Array [],
+        "url": "https://paatos-helsinki.6aika.fi/v1/organization/15/",
+      },
+      Object {
+        "classification": "Osasto",
+        "created_at": "2017-05-05T06:12:49.948763Z",
+        "data_source": "helsinki",
+        "dissolution_date": "2013-12-31",
+        "events": Array [],
+        "founding_date": null,
+        "id": 16,
+        "modified_at": "2017-05-05T06:12:49.948812Z",
+        "name": "Henkilöstövoimavaraosasto",
+        "origin_id": "018050",
+        "parent": null,
+        "posts": Array [],
+        "url": "https://paatos-helsinki.6aika.fi/v1/organization/16/",
+      },
+      Object {
+        "classification": "Osasto",
+        "created_at": "2017-05-05T06:12:49.961590Z",
+        "data_source": "helsinki",
+        "dissolution_date": "2013-12-31",
+        "events": Array [],
+        "founding_date": null,
+        "id": 17,
+        "modified_at": "2017-05-05T06:12:49.961635Z",
+        "name": "Maahanmuutto-osasto",
+        "origin_id": "018060",
+        "parent": null,
+        "posts": Array [],
+        "url": "https://paatos-helsinki.6aika.fi/v1/organization/17/",
+      },
+      Object {
+        "classification": "Virasto",
+        "created_at": "2017-05-05T06:12:49.973059Z",
+        "data_source": "helsinki",
+        "dissolution_date": "2015-12-31",
+        "events": Array [],
+        "founding_date": null,
+        "id": 18,
+        "modified_at": "2017-05-05T06:12:49.973116Z",
+        "name": "Työterveyskeskus",
+        "origin_id": "02000",
+        "parent": null,
+        "posts": Array [],
+        "url": "https://paatos-helsinki.6aika.fi/v1/organization/18/",
+      },
+      Object {
+        "classification": "Valtuusto",
+        "created_at": "2017-05-05T06:12:49.984343Z",
+        "data_source": "helsinki",
+        "dissolution_date": null,
+        "events": Array [
+          "https://paatos-helsinki.6aika.fi/v1/event/135/",
+          "https://paatos-helsinki.6aika.fi/v1/event/171/",
+          "https://paatos-helsinki.6aika.fi/v1/event/172/",
+          "https://paatos-helsinki.6aika.fi/v1/event/173/",
+          "https://paatos-helsinki.6aika.fi/v1/event/174/",
+          "https://paatos-helsinki.6aika.fi/v1/event/175/",
+          "https://paatos-helsinki.6aika.fi/v1/event/176/",
+          "https://paatos-helsinki.6aika.fi/v1/event/177/",
+          "https://paatos-helsinki.6aika.fi/v1/event/178/",
+          "https://paatos-helsinki.6aika.fi/v1/event/179/",
+          "https://paatos-helsinki.6aika.fi/v1/event/180/",
+          "https://paatos-helsinki.6aika.fi/v1/event/181/",
+          "https://paatos-helsinki.6aika.fi/v1/event/182/",
+          "https://paatos-helsinki.6aika.fi/v1/event/183/",
+          "https://paatos-helsinki.6aika.fi/v1/event/184/",
+          "https://paatos-helsinki.6aika.fi/v1/event/185/",
+          "https://paatos-helsinki.6aika.fi/v1/event/186/",
+          "https://paatos-helsinki.6aika.fi/v1/event/187/",
+          "https://paatos-helsinki.6aika.fi/v1/event/188/",
+          "https://paatos-helsinki.6aika.fi/v1/event/189/",
+          "https://paatos-helsinki.6aika.fi/v1/event/190/",
+          "https://paatos-helsinki.6aika.fi/v1/event/191/",
+          "https://paatos-helsinki.6aika.fi/v1/event/192/",
+          "https://paatos-helsinki.6aika.fi/v1/event/193/",
+          "https://paatos-helsinki.6aika.fi/v1/event/194/",
+          "https://paatos-helsinki.6aika.fi/v1/event/195/",
+          "https://paatos-helsinki.6aika.fi/v1/event/564/",
+          "https://paatos-helsinki.6aika.fi/v1/event/565/",
+          "https://paatos-helsinki.6aika.fi/v1/event/566/",
+          "https://paatos-helsinki.6aika.fi/v1/event/711/",
+          "https://paatos-helsinki.6aika.fi/v1/event/712/",
+          "https://paatos-helsinki.6aika.fi/v1/event/713/",
+          "https://paatos-helsinki.6aika.fi/v1/event/714/",
+          "https://paatos-helsinki.6aika.fi/v1/event/715/",
+          "https://paatos-helsinki.6aika.fi/v1/event/716/",
+          "https://paatos-helsinki.6aika.fi/v1/event/717/",
+          "https://paatos-helsinki.6aika.fi/v1/event/845/",
+          "https://paatos-helsinki.6aika.fi/v1/event/846/",
+          "https://paatos-helsinki.6aika.fi/v1/event/847/",
+          "https://paatos-helsinki.6aika.fi/v1/event/848/",
+          "https://paatos-helsinki.6aika.fi/v1/event/849/",
+          "https://paatos-helsinki.6aika.fi/v1/event/986/",
+          "https://paatos-helsinki.6aika.fi/v1/event/987/",
+          "https://paatos-helsinki.6aika.fi/v1/event/988/",
+          "https://paatos-helsinki.6aika.fi/v1/event/989/",
+          "https://paatos-helsinki.6aika.fi/v1/event/990/",
+          "https://paatos-helsinki.6aika.fi/v1/event/991/",
+          "https://paatos-helsinki.6aika.fi/v1/event/1110/",
+          "https://paatos-helsinki.6aika.fi/v1/event/1125/",
+          "https://paatos-helsinki.6aika.fi/v1/event/1126/",
+          "https://paatos-helsinki.6aika.fi/v1/event/1127/",
+          "https://paatos-helsinki.6aika.fi/v1/event/1196/",
+          "https://paatos-helsinki.6aika.fi/v1/event/1204/",
+          "https://paatos-helsinki.6aika.fi/v1/event/1231/",
+          "https://paatos-helsinki.6aika.fi/v1/event/1254/",
+          "https://paatos-helsinki.6aika.fi/v1/event/1271/",
+          "https://paatos-helsinki.6aika.fi/v1/event/1290/",
+          "https://paatos-helsinki.6aika.fi/v1/event/1305/",
+          "https://paatos-helsinki.6aika.fi/v1/event/1337/",
+          "https://paatos-helsinki.6aika.fi/v1/event/1376/",
+          "https://paatos-helsinki.6aika.fi/v1/event/1378/",
+          "https://paatos-helsinki.6aika.fi/v1/event/1403/",
+          "https://paatos-helsinki.6aika.fi/v1/event/1462/",
+          "https://paatos-helsinki.6aika.fi/v1/event/1463/",
+          "https://paatos-helsinki.6aika.fi/v1/event/1464/",
+          "https://paatos-helsinki.6aika.fi/v1/event/1465/",
+          "https://paatos-helsinki.6aika.fi/v1/event/1466/",
+          "https://paatos-helsinki.6aika.fi/v1/event/1602/",
+          "https://paatos-helsinki.6aika.fi/v1/event/1620/",
+          "https://paatos-helsinki.6aika.fi/v1/event/1697/",
+          "https://paatos-helsinki.6aika.fi/v1/event/1720/",
+          "https://paatos-helsinki.6aika.fi/v1/event/1727/",
+          "https://paatos-helsinki.6aika.fi/v1/event/1743/",
+          "https://paatos-helsinki.6aika.fi/v1/event/1759/",
+          "https://paatos-helsinki.6aika.fi/v1/event/1787/",
+          "https://paatos-helsinki.6aika.fi/v1/event/1823/",
+          "https://paatos-helsinki.6aika.fi/v1/event/1828/",
+          "https://paatos-helsinki.6aika.fi/v1/event/1832/",
+          "https://paatos-helsinki.6aika.fi/v1/event/1850/",
+          "https://paatos-helsinki.6aika.fi/v1/event/1880/",
+          "https://paatos-helsinki.6aika.fi/v1/event/1902/",
+          "https://paatos-helsinki.6aika.fi/v1/event/1916/",
+          "https://paatos-helsinki.6aika.fi/v1/event/1939/",
+          "https://paatos-helsinki.6aika.fi/v1/event/1970/",
+          "https://paatos-helsinki.6aika.fi/v1/event/1993/",
+          "https://paatos-helsinki.6aika.fi/v1/event/2012/",
+          "https://paatos-helsinki.6aika.fi/v1/event/2038/",
+          "https://paatos-helsinki.6aika.fi/v1/event/2052/",
+          "https://paatos-helsinki.6aika.fi/v1/event/2098/",
+          "https://paatos-helsinki.6aika.fi/v1/event/2117/",
+          "https://paatos-helsinki.6aika.fi/v1/event/2131/",
+          "https://paatos-helsinki.6aika.fi/v1/event/2145/",
+          "https://paatos-helsinki.6aika.fi/v1/event/2180/",
+          "https://paatos-helsinki.6aika.fi/v1/event/2196/",
+          "https://paatos-helsinki.6aika.fi/v1/event/2221/",
+          "https://paatos-helsinki.6aika.fi/v1/event/2262/",
+          "https://paatos-helsinki.6aika.fi/v1/event/2276/",
+          "https://paatos-helsinki.6aika.fi/v1/event/2280/",
+          "https://paatos-helsinki.6aika.fi/v1/event/2292/",
+          "https://paatos-helsinki.6aika.fi/v1/event/2324/",
+          "https://paatos-helsinki.6aika.fi/v1/event/2333/",
+          "https://paatos-helsinki.6aika.fi/v1/event/2373/",
+          "https://paatos-helsinki.6aika.fi/v1/event/2400/",
+          "https://paatos-helsinki.6aika.fi/v1/event/2420/",
+          "https://paatos-helsinki.6aika.fi/v1/event/2430/",
+          "https://paatos-helsinki.6aika.fi/v1/event/2448/",
+          "https://paatos-helsinki.6aika.fi/v1/event/2457/",
+          "https://paatos-helsinki.6aika.fi/v1/event/2477/",
+          "https://paatos-helsinki.6aika.fi/v1/event/2497/",
+          "https://paatos-helsinki.6aika.fi/v1/event/2525/",
+          "https://paatos-helsinki.6aika.fi/v1/event/2542/",
+        ],
+        "founding_date": null,
+        "id": 19,
+        "modified_at": "2017-05-05T06:12:49.984382Z",
+        "name": "Kaupunginvaltuusto",
+        "origin_id": "02900",
+        "parent": null,
+        "posts": Array [],
+        "url": "https://paatos-helsinki.6aika.fi/v1/organization/19/",
+      },
+      Object {
+        "classification": "Osasto",
+        "created_at": "2017-05-05T06:12:49.992342Z",
+        "data_source": "helsinki",
+        "dissolution_date": "2013-10-31",
+        "events": Array [],
+        "founding_date": null,
+        "id": 20,
+        "modified_at": "2017-05-05T06:12:49.992380Z",
+        "name": "Hallinto-osasto/Pel",
+        "origin_id": "111100",
+        "parent": null,
+        "posts": Array [],
+        "url": "https://paatos-helsinki.6aika.fi/v1/organization/20/",
+      },
+    ]
+  }
+>
+  <Section
+    pad={
+      Object {
+        "vertical": "medium",
+      }
+    }
+  >
+    <Box
+      announce={false}
+      className="grommetux-section"
+      direction="column"
+      focusable={true}
+      pad={
+        Object {
+          "vertical": "medium",
+        }
+      }
+      responsive={true}
+      tag="section"
+    >
+      <section
+        className="grommetux-box grommetux-box--direction-column grommetux-box--responsive grommetux-box--pad-vertical-medium grommetux-section"
+        style={Object {}}
+      >
+        <Search
+          align="left"
+          iconAlign="end"
+          inline={true}
+          onDOMChange={[Function]}
+          placeHolder="Hakusana"
+          responsive={false}
+          size="medium"
+        >
+          <div
+            className="grommetux-search grommetux-search--icon-align-end grommetux-search--inline grommetux-search--medium"
+          >
+            <input
+              autoComplete="off"
+              className="grommetux-input grommetux-search__input"
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseUp={[Function]}
+              placeholder="Hakusana"
+              type="search"
+            />
+            <Search
+              responsive={true}
+            >
+              <svg
+                aria-label="search"
+                className="grommetux-control-icon grommetux-control-icon-search grommetux-control-icon--responsive"
+                height="24px"
+                role="img"
+                version="1.1"
+                viewBox="0 0 24 24"
+                width="24px"
+              >
+                <path
+                  d="M15,15 L22,22 L15,15 Z M9.5,17 C13.6421356,17 17,13.6421356 17,9.5 C17,5.35786438 13.6421356,2 9.5,2 C5.35786438,2 2,5.35786438 2,9.5 C2,13.6421356 5.35786438,17 9.5,17 Z"
+                  fill="none"
+                  stroke="#000"
+                  strokeWidth="2"
+                />
+              </svg>
+            </Search>
+          </div>
+        </Search>
+      </section>
+    </Box>
+  </Section>
+</OrganizationSearch>
+`;

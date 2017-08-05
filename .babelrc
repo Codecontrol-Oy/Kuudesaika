@@ -4,7 +4,7 @@
             "transform-decorators-legacy",
             ["module-resolver", {
                 "alias": {
-                    "Actions": "./src/app/actions",
+                    "Actions": "./src/app/actions/",
                     "Components": "./src/app/components",
                     "Containers": "./src/app/containers"
                 }
