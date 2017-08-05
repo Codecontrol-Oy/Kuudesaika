@@ -1,0 +1,182 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CaseMap /> Should match snapshot 1`] = `
+<Section
+  pad={
+    Object {
+      "vertical": "medium",
+    }
+  }
+>
+  <ResourceMap
+    active={null}
+    data={
+      Object {
+        "categories": Array [
+          Object {
+            "id": "category-original",
+            "items": Array [
+              Object {
+                "id": "selected-1",
+                "label": "HEL 2012-002954",
+                "node": <Box
+                  announce={false}
+                  colorIndex="neutral-1"
+                  direction="column"
+                  focusable={true}
+                  pad="small"
+                  responsive={true}
+                  tag="div"
+      >
+                  HEL 2012-002954
+      </Box>,
+              },
+            ],
+            "label": "Asia",
+          },
+          Object {
+            "id": "category-sections",
+            "items": Array [
+              Object {
+                "id": "child-1",
+                "label": "Kaupunginhallitus",
+                "node": <Card
+                  a11yTitle="Card"
+                  colorIndex="neutral-4"
+                  contentPad="medium"
+                  description={
+                              <Section
+                                          pad={
+                                                      Object {
+                                                                  "vertical": "medium",
+                                                                }
+                                          }
+                              >
+                                          <b>
+                                                      <Timestamp
+                                                                  fields="date"
+                                                                  value="2013-04-18"
+                                                      />
+                                          </b>
+                                          <Article
+                                                      direction="column"
+                                                      pad="none"
+                                          >
+                                                      Kokouksen laillisuuden ja päätösvaltaisuuden toteaminen sekä pöytäkirjan tarkastajien valinta
+                                          </Article>
+                                          <Article
+                                                      direction="column"
+                                                      pad="none"
+                                          >
+                                                      <Heading
+                                                                  tag="h4"
+                                                                  uppercase={true}
+                                                      >
+                                                                  <Checkmark
+                                                                              colorIndex="ok"
+                                                                              responsive={true}
+                                                                  />
+                                                                   Hyväksytty ehdotuksen mukaan
+                                                      </Heading>
+                                          </Article>
+                              </Section>
+                  }
+                  heading="Kaupunginhallitus"
+                  headingStrong={true}
+                  label="Hallitus"
+                  link={
+                              <Anchor
+                                          animateIcon={true}
+                                          label="siirry organisaatioon"
+                                          method="push"
+                                          onClick={[Function]}
+                                          tag="a"
+                              />
+                  }
+                  pad="small"
+                  textSize="small"
+      />,
+              },
+              Object {
+                "id": "child-2",
+                "label": "Kaupunginhallitus",
+                "node": <Card
+                  a11yTitle="Card"
+                  colorIndex="neutral-4"
+                  contentPad="medium"
+                  description={
+                              <Section
+                                          pad={
+                                                      Object {
+                                                                  "vertical": "medium",
+                                                                }
+                                          }
+                              >
+                                          <b>
+                                                      <Timestamp
+                                                                  fields="date"
+                                                                  value="2013-04-18"
+                                                      />
+                                          </b>
+                                          <Article
+                                                      direction="column"
+                                                      pad="none"
+                                          >
+                                                      Asuntolautakunnan pöytäkirjojen nähtävänä pitäminen vuonna 2012
+                                          </Article>
+                                          <Article
+                                                      direction="column"
+                                                      pad="none"
+                                          >
+                                                      <Heading
+                                                                  tag="h4"
+                                                                  uppercase={true}
+                                                      >
+                                                                  <Checkmark
+                                                                              colorIndex="ok"
+                                                                              responsive={true}
+                                                                  />
+                                                                   Hyväksytty ehdotuksen mukaan
+                                                      </Heading>
+                                          </Article>
+                              </Section>
+                  }
+                  heading="Kaupunginhallitus"
+                  headingStrong={true}
+                  label="Hallitus"
+                  link={
+                              <Anchor
+                                          animateIcon={true}
+                                          label="siirry organisaatioon"
+                                          method="push"
+                                          onClick={[Function]}
+                                          tag="a"
+                              />
+                  }
+                  pad="small"
+                  textSize="small"
+      />,
+              },
+            ],
+            "label": "Käsittelypisteet",
+          },
+        ],
+        "links": Array [
+          Object {
+            "childId": "child-1",
+            "parentId": "selected-1",
+          },
+          Object {
+            "childId": "child-2",
+            "parentId": "selected-1",
+          },
+        ],
+      }
+    }
+    linkColorIndex="graph-1"
+    onActive={[Function]}
+    onClick={[Function]}
+    vertical={false}
+  />
+</Section>
+`;
