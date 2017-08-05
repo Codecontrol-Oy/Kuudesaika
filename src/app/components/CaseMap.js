@@ -111,7 +111,7 @@ export default class CaseMap extends React.Component {
     }
 
     for(let i = 0; i < categories[1].items.length; i++) {
-        links.push({'parentId': `selected-${this.props.currentCase.id.toString()}`, 'childId': categories[1].items[i].id.toString())
+        links.push({'parentId': `selected-${this.props.currentCase.id.toString()}`, 'childId': categories[1].items[i].id.toString()})
     }
     return <Map onClick={() => this.openOrganization(this.state.selectedOrganization)} onActive={this.selectOrganization} active={this.state.selectedOrganization} vertical={false} data={{'categories': categories, 'links': links}} />;
 
