@@ -2,6 +2,7 @@ import React from 'react';
 import LatestCase from './LatestCase.js';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import Section from 'grommet/components/Section';
 export default class LatestCaseList extends React.Component {
   constructor (props) {
     super(props);
@@ -45,9 +46,9 @@ export default class LatestCaseList extends React.Component {
 
   render () {
     return (
-        <div>
+        <Section>
             {this.props.latestCases && this.state.latest_cases}
-        </div>
+        </Section>
     );
   }
 }
