@@ -11,7 +11,7 @@ import Accordion from 'grommet/components/Accordion';
 import AccordionPanel from 'grommet/components/AccordionPanel';
 import Heading from 'grommet/components/Heading';
 import {OrganizationMap, Loader} from 'Components';
-import {fetchOrganization, fetchOrganizations} from 'Actions';
+import {fetchOrganization, fetchOrganizations,setCity} from 'Actions';
 
 @connect((store) => {
   return {
@@ -36,6 +36,7 @@ export default class OrganizationContainer extends React.Component {
 
   componentDidMount = () => {
     const organization_id = this.props.params.id;
+    setCity(this.props.params.city);
     this.setState({fetchStarted: false}, function () {
         fetchOrganizations();
         fetchOrganization(organization_id);

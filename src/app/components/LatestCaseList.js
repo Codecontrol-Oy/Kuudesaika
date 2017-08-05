@@ -9,6 +9,7 @@ export default class LatestCaseList extends React.Component {
     this.state = {
         latest_cases: []
     };
+    self = this;
   }
 
   componentDidMount = () => {
@@ -36,7 +37,7 @@ export default class LatestCaseList extends React.Component {
                                           subject={response.data.name}
                                           key={obj.id + '_latestcase'}
                     />);
-                    this.setState({latest_cases: cases});
+                    self.setState({latest_cases: cases});
                  });
 
         });

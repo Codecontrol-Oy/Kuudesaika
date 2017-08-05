@@ -5,6 +5,7 @@ import Image from 'grommet/components/Image';
 import Anchor from 'grommet/components/Anchor';
 import {browserHistory} from 'react-router';
 import PropTypes from 'prop-types';
+import {getCity} from 'Actions';
 
 @connect((store) => {
   return {
@@ -18,7 +19,7 @@ export default class OrganizationCard extends React.Component {
   }
 
   onLinkClick = (id) => {
-    browserHistory.push('/organisaatio/' + id);
+    browserHistory.push(getCity() + '/organisaatio/' +  id);
   }
 
   render () {
