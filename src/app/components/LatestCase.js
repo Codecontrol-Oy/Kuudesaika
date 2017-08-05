@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Card from 'grommet/components/Card';
 import Label from 'grommet/components/Label';
+import Anchor from 'grommet/components/Anchor';
+import {browserHistory} from 'react-router';
+
 export default class LatestCase extends React.Component {
   constructor (props) {
     super(props);
@@ -10,7 +13,8 @@ export default class LatestCase extends React.Component {
     };
   }
 
-  componentDidMount = () => {
+onLinkAction = () => {
+    browserHistory.push('/asia/' + this.props.id);
   }
 
   render () {
@@ -20,7 +24,9 @@ export default class LatestCase extends React.Component {
                   style={{borderBottom: '2px solid #CCC'}}
                   label={this.props.register_id}
                   heading={this.props.subject}
-                  description={<Label announce>{this.props.title}</Label>}/>
+                  description={<Label announce>{this.props.title}</Label>}
+                  link={<Anchor onClick={() => this.onLinkAction()} >Siirry</Anchor>}
+                  />
         </div>
     );
   }
