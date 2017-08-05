@@ -11,7 +11,8 @@ import Accordion from 'grommet/components/Accordion';
 import AccordionPanel from 'grommet/components/AccordionPanel';
 import Heading from 'grommet/components/Heading';
 import {OrganizationMap, Loader} from 'Components';
-import {fetchOrganization, fetchOrganizations,setCity} from 'Actions';
+import {browserHistory} from 'react-router';
+import {fetchOrganization, fetchOrganizations, setCity, getCity} from 'Actions';
 
 @connect((store) => {
   return {
@@ -85,8 +86,13 @@ export default class OrganizationContainer extends React.Component {
                                         <Heading tag={"h5"}
                                                  uppercase>{action.title}
                                         </Heading>
-                                        {action.fetchedCase ? <Article>({action.fetchedCase.register_id}) {action.fetchedCase.title} </Article> : '' }
-                                        {action.fetchedPost ? <Article><Label>Lausunnonantaja: {action.fetchedPost.label}</Label></Article> : '' }
+                                        {action.fetchedCase
+                                        && <Article>
+                                            ({action.fetchedCase.register_id}) {action.fetchedCase.title}
+                                                <Anchor onClick={() => self.onLinkAction(action.fetchedCase.id)} >Siirry</Anchor>
+                                            </Article>
+                                        }
+                                        {action.fetchedPost && <Article><Label>Lausunnonantaja: {action.fetchedPost.label}</Label></Article> }
                                             <Article><div dangerouslySetInnerHTML={{__html: para.hypertext}}></div></Article>
                                         </Section>);
                 });
@@ -100,6 +106,7 @@ export default class OrganizationContainer extends React.Component {
       }
       return eventListing;
   }
+
   gatherPosts = () => {
       const postListing = [];
       if (this.state.posts) {
@@ -112,9 +119,10 @@ export default class OrganizationContainer extends React.Component {
                                         <Heading tag={"h5"}
                                                  uppercase>{action.title}
                                         </Heading>
+                                        
                                         {action.fetchedCase ? <Article>({action.fetchedCase.register_id}) {action.fetchedCase.title} </Article> : '' }
                                         {action.fetchedPost ? <Article><Label>Lausunnonantaja: {action.fetchedPost.label}</Label></Article> : '' }
-                                            <Article><div dangerouslySetInnerHTML={{__html: para.hypertext}}></div></Article>
+                                         <Article><div dangerouslySetInnerHTML={{__html: para.hypertext}}></div></Article>
                                         </Section>);
                 });
             });
@@ -134,6 +142,12 @@ export default class OrganizationContainer extends React.Component {
         offset = this.state.offset + 5;
     }
     for (let i = organization.events.length - offset; i > (organization.events.length - this.state.limit - offset); i--) {
+        this.getEvent(organization, i);
+    }
+  }
+
+
+  getEvent = (organization, i) => {
         axios.get(organization.events[i - 1])
              .then(function (eventResponse) {
                 const eventList = self.state.events || [];
@@ -141,9 +155,7 @@ export default class OrganizationContainer extends React.Component {
                 currentEvent.actionList = [];
                 eventList.push(currentEvent);
                 self.setState({events: eventList});
-             });
-    }
-
+        });
   }
 
   fetchActions = (index) => {
@@ -169,7 +181,6 @@ export default class OrganizationContainer extends React.Component {
 
   fetchPostActions = (index) => {
       if (typeof (index) !== 'undefined') {
-          console.log('inside');
         const post = this.state.posts[index];
 
         post.actions.map(function (action) {
@@ -184,7 +195,7 @@ export default class OrganizationContainer extends React.Component {
   }
 
   fetchOrganizationPosts = (organization) => {
-      organization.posts.map((post, index) => {
+      organization.posts.map((post) => {
         axios.get(post)
              .then(function (postResponse) {
                 const postList = self.state.posts || [];
@@ -210,7 +221,6 @@ export default class OrganizationContainer extends React.Component {
   }
 
   fetchCase = (actionCase, action_id, eventIndex) => {
-      console.log(actionCase + ' Case url');
     axios.get(actionCase)
          .then(function (caseResponse) {
             const events = self.state.events;
@@ -223,6 +233,10 @@ export default class OrganizationContainer extends React.Component {
          });
   }
 
+  onLinkAction = (id) => {
+    browserHistory.push(`/${getCity()}/asia/` + id);
+  }
+
   render () {
     const events = this.gatherEvents();
     const posts = this.gatherPosts();
@@ -233,9 +247,13 @@ export default class OrganizationContainer extends React.Component {
             ? <div>
             <Heading tag={"h3"} uppercase className={theme.sectionTitle}>{this.props.organization.selected_organization.name}</Heading>
             <Heading tag={"h4"} uppercase>Kokoukset</Heading>
-            {events && events.length > 0 ? <Accordion onActive={this.onAccordionChange}>
-                {events}
-            </Accordion> : <Label>Ei kokouksia</Label>}
+            {events && events.length > 0
+                ? <Accordion onActive={this.onAccordionChange}>
+                    {events}
+                </Accordion>
+                : <Label>Ei kokouksia</Label>
+            }
+
             {this.props.organization.selected_organization.events && this.state.events && this.props.organization.selected_organization.events.length != this.state.events.length ? <Anchor onClick={this.fetchMore}>Hae Lisää</Anchor> : '' }
             <Heading tag={"h4"} uppercase>Lausunnot, Määräykset ja kannanotot</Heading>
              {posts && posts.length > 0 ? <Accordion onActive={this.onPostAccordionChange}>

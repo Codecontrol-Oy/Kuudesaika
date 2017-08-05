@@ -141,7 +141,6 @@ export default class CaseContainer extends React.Component {
 }
 
 	onLinkAction = (id) => {
-
 		browserHistory.push(`/${getCity()}/organisaatio/` + id);
 	}
 
