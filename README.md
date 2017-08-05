@@ -14,6 +14,7 @@ The service will be published by default at port 8080.
 docker pull codecontrol/kuudesaika
 docker run -itd -p:8080:8080 --name kuudesaika codecontrol/kuudesaika
 
+
 ## Configuration Instructions
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
