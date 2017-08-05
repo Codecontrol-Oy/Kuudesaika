@@ -4,6 +4,7 @@ import Card from 'grommet/components/Card';
 import Label from 'grommet/components/Label';
 import Anchor from 'grommet/components/Anchor';
 import {browserHistory} from 'react-router';
+import {getCity} from 'Actions';
 
 export default class LatestCase extends React.Component {
   constructor (props) {
@@ -14,7 +15,7 @@ export default class LatestCase extends React.Component {
   }
 
 onLinkAction = () => {
-    browserHistory.push('/asia/' + this.props.id);
+    browserHistory.push(getCity() + '/asia/' + this.props.id);
   }
 
   render () {

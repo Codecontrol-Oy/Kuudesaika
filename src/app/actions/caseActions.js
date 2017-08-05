@@ -18,6 +18,6 @@ export function fetchLatest () {
 export function fetchCase (id) {
     store.dispatch({
         type: constants.CASE_FETCH,
-        payload: axios.get(settings.API_ROOT_URL + settings.CASE + id)
+        payload: axios.get(getAPIUrl() + settings.CASE + id)
     });
 }

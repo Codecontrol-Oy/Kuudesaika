@@ -12,7 +12,7 @@ import AccordionPanel from 'grommet/components/AccordionPanel';
 import Heading from 'grommet/components/Heading';
 import { OrganizationMap, Loader } from 'Components';
 import {browserHistory} from 'react-router';
-import { fetchLatest, fetchCase, setCity } from 'Actions';
+import { fetchLatest, fetchCase, setCity, getCity } from 'Actions';
 
 @connect((store) => {
 	return {
@@ -45,19 +45,19 @@ export default class CaseContainer extends React.Component {
 
 	componentDidUpdate = () => {
 		const selected_case = this.state.selected_case || this.props.selected_case;
+		console.log(selected_case);
 		if (selected_case && !this.state.fetchStarted) {
 			console.log(selected_case);
 			this.setState({ fetchStarted: true }, function () {
-				if (selected_case.actions.length > 0) {
+				if (selected_case.actions && selected_case.actions.length > 0) {
 					this.fetchActions(selected_case);
 				}
-				if (selected_case.geometries.length > 0) {
+				if (selected_case.geometries && selected_case.geometries.length > 0) {
 					console.log('---- GEOMETRIES ----');
 					console.log(selected_case.geometries);
 				}
 			});
 		}
-
 	}
 
 	gatherActions = () => {
@@ -141,7 +141,8 @@ export default class CaseContainer extends React.Component {
 }
 
 	onLinkAction = (id) => {
-		browserHistory.push('/organisaatio/' + id);
+
+		browserHistory.push(`/${getCity()}/organisaatio/` + id);
 	}
 
 	render () {
