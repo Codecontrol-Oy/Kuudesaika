@@ -10,7 +10,7 @@ import Timestamp from 'grommet/components/Timestamp';
 import Accordion from 'grommet/components/Accordion';
 import AccordionPanel from 'grommet/components/AccordionPanel';
 import Heading from 'grommet/components/Heading';
-import { OrganizationMap, Loader } from 'Components';
+import {Loader} from 'Components';
 import {browserHistory} from 'react-router';
 import { fetchLatest, fetchCase, setCity, getCity } from 'Actions';
 
@@ -141,7 +141,6 @@ export default class CaseContainer extends React.Component {
 }
 
 	onLinkAction = (id) => {
-
 		browserHistory.push(`/${getCity()}/organisaatio/` + id);
 	}
 
