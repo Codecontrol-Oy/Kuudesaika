@@ -77,7 +77,7 @@ export default class CaseContainer extends React.Component {
 										fields={"date"}
 										value={action.event ? action.event.start_date : action.post.start_date}
 									/>
-						{action.event ? action.event.organization.name : action.post.organization.name} kokouksessa.
+						{action.event ? ' ' + action.event.organization.name : ' ' + action.post.organization.name} kokouksessa.
 					</Heading>
 					{action.post && <Label>Lausunnonantaja: {action.post.label}</Label>}
 					<Anchor onClick={() => self.onLinkAction(action.event ? action.event.organization.id : action.post.organization.id)} >Siirry</Anchor>
@@ -172,7 +172,7 @@ export default class CaseContainer extends React.Component {
 							: <Label>Ei liitteitä</Label>
 						: <Loader />
 						}
-						{(selected_case.geometries && selected_case.geometries.length)
+						{selected_case.geometries && selected_case.geometries.length > 0
 						&& <Section>
 							<Heading className={theme.marginTop} tag={"h4"} uppercase>Aluetiedot</Heading>
 							<CaseGeo geometries={selected_case.geometries} />
