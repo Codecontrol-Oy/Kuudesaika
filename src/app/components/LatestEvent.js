@@ -1,9 +1,9 @@
 import React from 'react';
-import {browserHistory} from 'react-router';
 import PropTypes from 'prop-types';
 import Card from 'grommet/components/Card';
 import Anchor from 'grommet/components/Anchor';
-import {getCity} from 'Actions';
+import { getCity } from 'Actions';
+import { browserHistory } from 'react-router';
 
 export default class LatestEvent extends React.Component {
   constructor (props) {
