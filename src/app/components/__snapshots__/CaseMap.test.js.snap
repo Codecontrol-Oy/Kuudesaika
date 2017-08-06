@@ -17,7 +17,7 @@ exports[`<CaseMap /> Should match snapshot 1`] = `
             "id": "category-original",
             "items": Array [
               Object {
-                "id": "selected-1",
+                "id": "primary",
                 "label": "HEL 2012-002954",
                 "node": <Box
                   announce={false}
@@ -38,7 +38,7 @@ exports[`<CaseMap /> Should match snapshot 1`] = `
             "id": "category-sections",
             "items": Array [
               Object {
-                "id": "1",
+                "id": "106",
                 "label": "Kaupunginhallitus",
                 "node": <Card
                   a11yTitle="Card"
@@ -91,7 +91,7 @@ exports[`<CaseMap /> Should match snapshot 1`] = `
       />,
               },
               Object {
-                "id": "2",
+                "id": "106",
                 "label": "Kaupunginhallitus",
                 "node": <Card
                   a11yTitle="Card"
@@ -149,12 +149,12 @@ exports[`<CaseMap /> Should match snapshot 1`] = `
         ],
         "links": Array [
           Object {
-            "childId": "1",
-            "parentId": "selected-1",
+            "childId": "106",
+            "parentId": "primary",
           },
           Object {
-            "childId": "2",
-            "parentId": "selected-1",
+            "childId": "106",
+            "parentId": "primary",
           },
         ],
       }

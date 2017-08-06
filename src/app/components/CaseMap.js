@@ -21,9 +21,8 @@ export default class CaseMap extends React.Component {
   }
 
   openOrganization = (id) => {
-   if (id) {
+   if (id && id != 'primary') {
         browserHistory.push(`/${getCity()}/organisaatio/` + id);
-        window.location.reload();
    }
   }
 
@@ -48,8 +47,9 @@ export default class CaseMap extends React.Component {
             'label': 'Käsittelypisteet',
             'items': []
          });
+        
         categories[0].items.push({
-                'id': 'selected-' + this.props.currentCase.id.toString(),
+                'id': 'primary',
                 'label': this.props.currentCase.register_id,
                 'node': <Box colorIndex='neutral-1' pad={"small"}>{this.props.currentCase.register_id}</Box>
                 });
@@ -60,7 +60,7 @@ export default class CaseMap extends React.Component {
         const organization = this.props.actions[i].event ? this.props.actions[i].event.organization : this.props.actions[i].post.organization;
         const startDate = isEventBased ? this.props.actions[i].event.start_date : this.props.actions[i].post.start_date;
         categories[1].items.push({
-                'id': this.props.actions[i].id.toString(),
+                'id': organization.id.toString(),
                 'label': isEventBased ? this.props.actions[i].event.organization.name : this.props.actions[i].post.organization.name,
                 'node': <Card colorIndex='neutral-4'
                               pad={"small"}
@@ -74,7 +74,7 @@ export default class CaseMap extends React.Component {
     }
 
     for(let i = 0; i < categories[1].items.length; i++) {
-        links.push({'parentId': `selected-${this.props.currentCase.id.toString()}`, 'childId': categories[1].items[i].id.toString()})
+        links.push({'parentId': 'primary', 'childId': categories[1].items[i].id.toString()})
     }
     return <Map onClick={() => this.openOrganization(this.state.selectedOrganization)} onActive={this.selectOrganization} active={this.state.selectedOrganization} vertical={false} data={{'categories': categories, 'links': links}} />;
 
