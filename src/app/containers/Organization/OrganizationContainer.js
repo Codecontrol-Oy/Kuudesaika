@@ -139,7 +139,7 @@ export default class OrganizationContainer extends React.Component {
                                     key={post.id + '_postValue'}
                                     heading={<Label>{post.label}</Label>}>
                                     {actionComponents}
-                                    {actionComponents.length !== post.actionList.length} <Anchor onClick={self.fetchMoreActions}>Hae Lisää</Anchor>
+                                    {actionComponents.length !== post.actionList.length} <Anchor className={theme.marginTop} primary={true} icon={<CycleIcon />} onClick={self.fetchMoreActions}>Hae Lisää</Anchor>
                               </AccordionPanel>);
         });
       }
