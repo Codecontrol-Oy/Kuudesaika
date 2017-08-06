@@ -17,6 +17,7 @@ exports[`<OrganizationCard /> should match snapshot 1`] = `
       tag="a"
     />
   }
+  onClick={[Function]}
   textSize="small"
   thumbnail={
     <Image
