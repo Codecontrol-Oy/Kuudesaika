@@ -68,16 +68,9 @@ exports[`<CaseMap /> Should match snapshot 1`] = `
                                                       direction="column"
                                                       pad="none"
                                           >
-                                                      <Heading
-                                                                  tag="h4"
-                                                                  uppercase={true}
-                                                      >
-                                                                  <Checkmark
-                                                                              colorIndex="ok"
-                                                                              responsive={true}
-                                                                  />
-                                                                   Hyväksytty ehdotuksen mukaan
-                                                      </Heading>
+                                                      <Breadcrumb
+                                                                  resolution="PASSED"
+                                                      />
                                           </Article>
                               </Section>
                   }
@@ -128,16 +121,9 @@ exports[`<CaseMap /> Should match snapshot 1`] = `
                                                       direction="column"
                                                       pad="none"
                                           >
-                                                      <Heading
-                                                                  tag="h4"
-                                                                  uppercase={true}
-                                                      >
-                                                                  <Checkmark
-                                                                              colorIndex="ok"
-                                                                              responsive={true}
-                                                                  />
-                                                                   Hyväksytty ehdotuksen mukaan
-                                                      </Heading>
+                                                      <Breadcrumb
+                                                                  resolution="PASSED"
+                                                      />
                                           </Article>
                               </Section>
                   }
