@@ -60,7 +60,7 @@ export default class CaseMap extends React.Component {
         const organization = this.props.actions[i].event ? this.props.actions[i].event.organization : this.props.actions[i].post.organization;
         const startDate = isEventBased ? this.props.actions[i].event.start_date : this.props.actions[i].post.start_date;
         categories[1].items.push({
-                'id': 'child-' + this.props.actions[i].id.toString(),
+                'id': this.props.actions[i].id.toString(),
                 'label': isEventBased ? this.props.actions[i].event.organization.name : this.props.actions[i].post.organization.name,
                 'node': <Card colorIndex='neutral-4'
                               pad={"small"}
