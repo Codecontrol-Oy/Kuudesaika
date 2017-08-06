@@ -10,7 +10,7 @@ import Timestamp from 'grommet/components/Timestamp';
 import Accordion from 'grommet/components/Accordion';
 import AccordionPanel from 'grommet/components/AccordionPanel';
 import Heading from 'grommet/components/Heading';
-import {OrganizationMap, Loader} from 'Components';
+import {OrganizationMap, Loader, ActionResolution} from 'Components';
 import {browserHistory} from 'react-router';
 import {fetchOrganization, fetchOrganizations, setCity, getCity} from 'Actions';
 import InformationIcon from 'grommet/components/icons/base/CircleInformation';
@@ -103,7 +103,7 @@ export default class OrganizationContainer extends React.Component {
                                                 onClick={() => self.onLinkAction(action.fetchedCase.id)} />
                                         }
                                         {action.fetchedPost && <Article><Label>Lausunnonantaja: {action.fetchedPost.label}</Label></Article> }
-                                            <Article className={theme.bottomBorder}><div dangerouslySetInnerHTML={{__html: para.hypertext}}></div></Article>
+                                            <Article><div dangerouslySetInnerHTML={{__html: para.hypertext}}></div><ActionResolution resolution={action.resolution}/></Article>
                                         </Section>);
                 });
             });
@@ -274,7 +274,7 @@ export default class OrganizationContainer extends React.Component {
     const posts = this.gatherPosts();
 
     return (
-        <Section>
+        <Section pad="small">
             {this.props.organization.selected_organization && this.props.organization.organizations
             ? <div>
             <Heading tag={"h3"} uppercase className={theme.sectionTitle}>{this.props.organization.selected_organization.name}</Heading>

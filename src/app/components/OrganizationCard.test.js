@@ -47,8 +47,7 @@ describe('<OrganizationCard />', () => {
         
         const callback = sinon.spy(organizationCard.instance(),'onLinkClick');
         expect(organizationCard.find('a').length).toEqual(1);
-        const organizationLink = organizationCard.find('a');
-        organizationLink.simulate('click');
+        organizationCard.simulate('click');
         expect(callback.calledOnce).toEqual(true);
         expect(browserHistory.push).toHaveBeenCalled(); 
         expect(callback.firstCall.args[0]).toEqual(mock.id)

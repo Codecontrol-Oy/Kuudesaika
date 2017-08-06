@@ -1,0 +1,162 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LandingPageContainer /> Matches snapshot 1`] = `
+<Section
+  pad={
+    Object {
+      "vertical": "medium",
+    }
+  }
+>
+  <Tiles
+    flush={true}
+    justify="start"
+    pad="small"
+  >
+    <Card
+      a11yTitle="Card"
+      contentPad="medium"
+      heading="Helsinki"
+      headingStrong={true}
+      link={
+        <Anchor
+          animateIcon={true}
+          label="siirry"
+          method="push"
+          onClick={[Function]}
+          tag="a"
+        />
+      }
+      onClick={[Function]}
+      textSize="small"
+      thumbnail={
+        <Image
+          alt="temporary image"
+          size="medium"
+          src="http://lorempixel.com/640/480/city?1"
+        />
+      }
+    />
+    <Card
+      a11yTitle="Card"
+      contentPad="medium"
+      heading="Espoo"
+      headingStrong={true}
+      link={
+        <Anchor
+          animateIcon={true}
+          label="siirry"
+          method="push"
+          onClick={[Function]}
+          tag="a"
+        />
+      }
+      onClick={[Function]}
+      textSize="small"
+      thumbnail={
+        <Image
+          alt="temporary image"
+          size="medium"
+          src="http://lorempixel.com/640/480/city?2"
+        />
+      }
+    />
+    <Card
+      a11yTitle="Card"
+      contentPad="medium"
+      heading="Turku"
+      headingStrong={true}
+      link={
+        <Anchor
+          animateIcon={true}
+          label="siirry"
+          method="push"
+          onClick={[Function]}
+          tag="a"
+        />
+      }
+      onClick={[Function]}
+      textSize="small"
+      thumbnail={
+        <Image
+          alt="temporary image"
+          size="medium"
+          src="http://lorempixel.com/640/480/city?3"
+        />
+      }
+    />
+    <Card
+      a11yTitle="Card"
+      contentPad="medium"
+      heading="Oulu"
+      headingStrong={true}
+      link={
+        <Anchor
+          animateIcon={true}
+          label="siirry"
+          method="push"
+          onClick={[Function]}
+          tag="a"
+        />
+      }
+      onClick={[Function]}
+      textSize="small"
+      thumbnail={
+        <Image
+          alt="temporary image"
+          size="medium"
+          src="http://lorempixel.com/640/480/city?4"
+        />
+      }
+    />
+    <Card
+      a11yTitle="Card"
+      contentPad="medium"
+      heading="Tampere"
+      headingStrong={true}
+      link={
+        <Anchor
+          animateIcon={true}
+          label="siirry"
+          method="push"
+          onClick={[Function]}
+          tag="a"
+        />
+      }
+      onClick={[Function]}
+      textSize="small"
+      thumbnail={
+        <Image
+          alt="temporary image"
+          size="medium"
+          src="http://lorempixel.com/640/480/city?5"
+        />
+      }
+    />
+    <Card
+      a11yTitle="Card"
+      contentPad="medium"
+      heading="Vantaa"
+      headingStrong={true}
+      link={
+        <Anchor
+          animateIcon={true}
+          label="siirry"
+          method="push"
+          onClick={[Function]}
+          tag="a"
+        />
+      }
+      onClick={[Function]}
+      textSize="small"
+      thumbnail={
+        <Image
+          alt="temporary image"
+          size="medium"
+          src="http://lorempixel.com/640/480/city?6"
+        />
+      }
+    />
+  </Tiles>
+</Section>
+`;

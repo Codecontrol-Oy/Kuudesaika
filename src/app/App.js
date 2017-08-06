@@ -4,8 +4,12 @@ import Application from 'grommet/components/App';
 import Header from 'grommet/components/Header';
 import Section from 'grommet/components/Section';
 import Anchor from 'grommet/components/Anchor';
+import Paragraph from 'grommet/components/Paragraph';
 import Heading from 'grommet/components/Heading';
 import Footer from 'grommet/components/Footer';
+import Box from 'grommet/components/Box';
+import {Breadcrumb} from 'Components';
+import {browserHistory} from 'react-router';
 
 export default class App extends Component {
   constructor (props) {
@@ -13,6 +17,7 @@ export default class App extends Component {
   }
 
   render () {
+    const location = browserHistory.getCurrentLocation();
     return (
       <Application centered={false}>
         <Header size={"large"} className={theme.header}>
@@ -20,6 +25,7 @@ export default class App extends Component {
           <Heading align={"center"} strong tag={"h1"} uppercase>Decisions API React Client</Heading>
         </Header>
         <Section className={theme.app}>
+          {location.pathname !== '/' && <Breadcrumb path={location} />}
           {this.props.children}
         </Section>
         <Footer size={"large"} className={theme.footer}>
