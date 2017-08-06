@@ -145,7 +145,7 @@ export default class CaseContainer extends React.Component {
 		const pending = this.state.pending;
 
 		return (
-			<Section>
+			<Section pad="small">
 				{selected_case && cases
 					? <Section>
 						<Heading tag={"h3"} uppercase className={theme.sectionTitle}>

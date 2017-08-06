@@ -20,10 +20,9 @@ exports[`<App /> Matches snapshot 1`] = `
     >
       <Anchor
         animateIcon={true}
-        href="https://6aika.fi/kaupungit"
+        href="/"
         method="push"
         tag="a"
-        target="_blank"
       >
         #6Aika
       </Anchor>
@@ -42,7 +41,21 @@ exports[`<App /> Matches snapshot 1`] = `
           "vertical": "medium",
         }
       }
-    />
+    >
+      <Breadcrumb
+        path={
+          Object {
+            "action": "POP",
+            "hash": "",
+            "key": null,
+            "pathname": "blank",
+            "query": Object {},
+            "search": "",
+            "state": undefined,
+          }
+        }
+      />
+    </Section>
     <Footer
       align="center"
       direction="row"

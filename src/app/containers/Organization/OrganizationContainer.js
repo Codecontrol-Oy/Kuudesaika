@@ -241,7 +241,7 @@ export default class OrganizationContainer extends React.Component {
     const posts = this.gatherPosts();
 
     return (
-        <Section>
+        <Section pad="small">
             {this.props.organization.selected_organization && this.props.organization.organizations
             ? <div>
             <Heading tag={"h3"} uppercase className={theme.sectionTitle}>{this.props.organization.selected_organization.name}</Heading>

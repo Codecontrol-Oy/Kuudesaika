@@ -32,11 +32,11 @@ export default class MainPageContainer extends React.Component {
     return (
         <Section>
           <Split flex={"left"} showOnResponsive={"both"}>
-            <Box pad='medium'>
+            <Box pad="small">
               <Heading className={theme.sectionTitle} tag={"h3"} uppercase>Suosituimmat organisaatiot</Heading>
               {this.props.organization.organizations ? <OrganizationCardList organizations={this.props.organization.organizations.results} /> : <Loader />}
             </Box>
-            <Box pad='medium' >
+            <Box pad="small">
               <Heading className={theme.sectionTitle} tag={"h3"} uppercase>Organisaatiohaku</Heading>
               {this.props.organization.organizations ? <OrganizationSearch organizations={this.props.organization.organizations.results} /> : <Loader />}
               <Heading className={theme.sectionTitle} tag={"h3"} uppercase>Viimeisimmät kokoukset</Heading>
