@@ -1,67 +1,66 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<App /> Matches snapshot 1`] = `
-<MuiThemeProvider>
-  <App
-    centered={false}
+<App
+  centered={false}
+>
+  <Header
+    align="center"
+    direction="row"
+    pad={
+      Object {
+        "between": "small",
+        "horizontal": "none",
+        "vertical": "none",
+      }
+    }
+    responsive={false}
+    size="large"
   >
-    <Header
+    <Anchor
+      animateIcon={true}
+      href="https://6aika.fi/kaupungit"
+      method="push"
+      tag="a"
+      target="_blank"
+    >
+      #6Aika
+    </Anchor>
+    <Heading
       align="center"
-      direction="row"
-      pad={
+      strong={true}
+      tag="h1"
+      uppercase={true}
+    >
+      Decisions API React Client
+    </Heading>
+  </Header>
+  <Section
+    pad={
+      Object {
+        "vertical": "medium",
+      }
+    }
+  >
+    <Breadcrumb
+      path={
         Object {
-          "between": "small",
-          "horizontal": "none",
-          "vertical": "none",
+          "action": "POP",
+          "hash": "",
+          "key": null,
+          "pathname": "blank",
+          "query": Object {},
+          "search": "",
+          "state": undefined,
         }
       }
-      responsive={false}
-      size="large"
-    >
-      <Anchor
-        animateIcon={true}
-        href="/"
-        method="push"
-        tag="a"
-      >
-        #6Aika
-      </Anchor>
-      <Heading
-        align="center"
-        strong={true}
-        tag="h1"
-        uppercase={true}
-      >
-        Decisions API React Client
-      </Heading>
-    </Header>
-    <Section
-      pad={
-        Object {
-          "vertical": "medium",
-        }
-      }
-    >
-      <Breadcrumb
-        path={
-          Object {
-            "action": "POP",
-            "hash": "",
-            "key": null,
-            "pathname": "blank",
-            "query": Object {},
-            "search": "",
-            "state": undefined,
-          }
-        }
-      />
-    </Section>
-    <Footer
-      align="center"
-      direction="row"
-      responsive={false}
-      size="large"
     />
-  </App>
-</MuiThemeProvider>
+  </Section>
+  <Footer
+    align="center"
+    direction="row"
+    responsive={false}
+    size="large"
+  />
+</App>
 `;
