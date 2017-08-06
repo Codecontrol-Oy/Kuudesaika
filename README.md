@@ -17,11 +17,9 @@ This is a client-only app that does not require other server environment than th
 1. git clone https://github.com/Codecontrol-Oy/Kuudesaika
 1. cd Kuudesaika
 1. npm install
-This takes a while.
+> This takes a while.
 5. npm start
-
-The service will be published by default at port 8080. The app generates deep links to documents dynamically from the data you donwload. If you were to want to make a version of the app that uses static html files, even a local web server would not be required.
-
+> The service will be published by default at port 8080. The app generates deep links to documents dynamically from the data you donwload. If you were to want to make a version of the app that uses static html files, even a local web server would not be required.
 6. Open localhost port 8080: http://localhost:8080
 
 ### Install with Docker
