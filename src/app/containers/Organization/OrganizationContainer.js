@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import theme from '../../theme/global.scss';
 import axios from 'axios';
 import Section from 'grommet/components/Section';
-import Anchor from 'grommet/components/Section';
+import Anchor from 'grommet/components/Anchor';
 import Article from 'grommet/components/Article';
 import Label from 'grommet/components/Label';
 import Timestamp from 'grommet/components/Timestamp';
@@ -13,6 +13,8 @@ import Heading from 'grommet/components/Heading';
 import {OrganizationMap, Loader} from 'Components';
 import {browserHistory} from 'react-router';
 import {fetchOrganization, fetchOrganizations, setCity, getCity} from 'Actions';
+import InformationIcon from 'grommet/components/icons/base/CircleInformation';
+import CycleIcon from 'grommet/components/icons/base/FormRefresh';
 
 @connect((store) => {
   return {
@@ -30,7 +32,9 @@ export default class OrganizationContainer extends React.Component {
         fetchStarted: false,
         limit: 5,
         offset: 0,
-        selectedOrganization: null
+        selectedOrganization: null,
+        actionOffset: 0,
+        actionLimit: 2
     };
     self = this;
   }
@@ -62,14 +66,21 @@ export default class OrganizationContainer extends React.Component {
     this.fetchActions(e);
   }
 
- onPostAccordionChange = (e) => {
+    onPostAccordionChange = (e) => {
     this.fetchPostActions(e);
+    this.setState({currentPost: e});
   }
 
   fetchMore = () => {
     let offset = this.state.offset;
     offset = offset + 5;
     this.setState({offset}, this.fetchEvents(this.props.organization.selected_organization));
+  }
+
+  fetchMoreActions = () => {
+      let offset = this.state.actionOffset;
+      offset = offset + 5;
+      this.setState({actionOffset: offset}, this.fetchPostAction());
   }
 
   gatherEvents = () => {
@@ -86,19 +97,19 @@ export default class OrganizationContainer extends React.Component {
                                                  uppercase>{action.title}
                                         </Heading>
                                         {action.fetchedCase
-                                        && <Article>
-                                            ({action.fetchedCase.register_id}) {action.fetchedCase.title}
-                                                <Anchor onClick={() => self.onLinkAction(action.fetchedCase.id)} >Siirry</Anchor>
-                                            </Article>
+                                            && <Anchor href="#" icon={<InformationIcon />}
+                                                primary={true}
+                                                label='Siirry asiaan'
+                                                onClick={() => self.onLinkAction(action.fetchedCase.id)} />
                                         }
                                         {action.fetchedPost && <Article><Label>Lausunnonantaja: {action.fetchedPost.label}</Label></Article> }
-                                            <Article><div dangerouslySetInnerHTML={{__html: para.hypertext}}></div></Article>
+                                            <Article className={theme.bottomBorder}><div dangerouslySetInnerHTML={{__html: para.hypertext}}></div></Article>
                                         </Section>);
                 });
             });
             eventListing.push(<AccordionPanel
                                     key={event.id + '_eventValue'}
-                                    heading={<Label>Kokouspäivämäärä <Timestamp fields={"date"} value={event.start_date}/></Label>}>
+                                    heading={<Heading tag={"h5"}>Kokouspäivämäärä <Timestamp fields={"date"} value={event.start_date}/></Heading>} >
                                     {actionList}
                               </AccordionPanel>);
         });
@@ -110,15 +121,14 @@ export default class OrganizationContainer extends React.Component {
       const postListing = [];
       if (this.state.posts) {
           this.state.posts.map(function (post) {
-            let actionList = [];
-            post.actionList.sort((a, b) => a.ordering - b.ordering)
+            let actionComponents = [];
+            post.actionList.sort((a, b) => b.ordering - a.ordering)
                             .map(function (action) {
                 action.contents.map(function (para) {
-                    actionList.push(<Section key={para.origin_id + '_PostArticle'}>
+                    actionComponents.push(<Section key={para.origin_id + '_PostArticle'}>
                                         <Heading tag={"h5"}
                                                  uppercase>{action.title}
                                         </Heading>
-                                        
                                         {action.fetchedCase ? <Article>({action.fetchedCase.register_id}) {action.fetchedCase.title} </Article> : '' }
                                         {action.fetchedPost ? <Article><Label>Lausunnonantaja: {action.fetchedPost.label}</Label></Article> : '' }
                                          <Article><div dangerouslySetInnerHTML={{__html: para.hypertext}}></div></Article>
@@ -128,7 +138,8 @@ export default class OrganizationContainer extends React.Component {
             postListing.push(<AccordionPanel
                                     key={post.id + '_postValue'}
                                     heading={<Label>{post.label}</Label>}>
-                                    {actionList}
+                                    {actionComponents}
+                                    {actionComponents.length !== post.actionList.length} <Anchor onClick={self.fetchMoreActions}>Hae Lisää</Anchor>
                               </AccordionPanel>);
         });
       }
@@ -178,17 +189,39 @@ export default class OrganizationContainer extends React.Component {
     }
   }
 
+  fetchPostAction = () => {
+    const index = this.state.currentPost;
+    if (typeof (index) !== 'undefined') {
+        const post = this.state.posts[index];
+        const offset = this.state.actionOffset + 2;
+        for (let i = post.actions.length - offset; i > (post.actions.length - this.state.actionLimit - offset); i--) {
+            this.getPostAction(post.actions[i], index);
+        }
+    }
+  }
+
+  getPostAction = (action, index) => {
+      axios.get(action)
+        .then(function (actionResponse) {
+            const existingPosts = self.state.posts;
+            existingPosts[index].actionList.push(actionResponse.data);
+            self.setState({posts: existingPosts});
+        });
+  }
+
   fetchPostActions = (index) => {
       if (typeof (index) !== 'undefined') {
         const post = this.state.posts[index];
 
-        post.actions.map(function (action) {
+        post.actions.map(function (action, i) {
+            if (i < 2) {
                 axios.get(action)
                     .then(function (actionResponse) {
                         const existingPosts = self.state.posts;
                         existingPosts[index].actionList.push(actionResponse.data);
                         self.setState({posts: existingPosts});
                     });
+            }
         });
     }
   }
@@ -245,7 +278,7 @@ export default class OrganizationContainer extends React.Component {
             {this.props.organization.selected_organization && this.props.organization.organizations
             ? <div>
             <Heading tag={"h3"} uppercase className={theme.sectionTitle}>{this.props.organization.selected_organization.name}</Heading>
-            <Heading tag={"h4"} uppercase>Kokoukset</Heading>
+            <Heading tag={"h4"} className={theme.marginTop} uppercase>Kokoukset</Heading>
             {events && events.length > 0
                 ? <Accordion onActive={this.onAccordionChange}>
                     {events}
@@ -253,12 +286,16 @@ export default class OrganizationContainer extends React.Component {
                 : <Label>Ei kokouksia</Label>
             }
 
-            {this.props.organization.selected_organization.events && this.state.events && this.props.organization.selected_organization.events.length != this.state.events.length ? <Anchor onClick={this.fetchMore}>Hae Lisää</Anchor> : '' }
-            <Heading tag={"h4"} uppercase>Lausunnot, Määräykset ja kannanotot</Heading>
+            {(this.props.organization.selected_organization.events && this.state.events
+            && this.props.organization.selected_organization.events.length !== this.state.events.length)
+            && <Anchor className={theme.marginTop} primary={true} icon={<CycleIcon />} onClick={this.fetchMore}>Hae Lisää</Anchor>
+            }
+            <Heading className={theme.marginTop} tag={"h4"} uppercase>Lausunnot, Määräykset ja kannanotot</Heading>
              {posts && posts.length > 0 ? <Accordion onActive={this.onPostAccordionChange}>
                 {posts}
-            </Accordion> : <Label>Ei lausuntoja, määräyksiä tai kannanottoja</Label>}
-            <Heading tag={"h4"} uppercase>Organisaatiokaavio</Heading>
+            </Accordion>
+            : <Label>Ei lausuntoja, määräyksiä tai kannanottoja</Label>}
+            <Heading tag={"h4"} uppercase className={theme.marginTop}>Organisaatiokaavio</Heading>
             {this.props.organization.organizations && this.props.organization.selected_organization
             ? <OrganizationMap organization={this.props.organization.selected_organization} organizations={this.props.organization.organizations.results} />
             : null}

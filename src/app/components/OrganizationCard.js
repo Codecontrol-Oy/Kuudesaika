@@ -13,7 +13,7 @@ export default class OrganizationCard extends React.Component {
   }
 
   onLinkClick = (id) => {
-    browserHistory.push(getCity() + '/organisaatio/' +  id);
+    browserHistory.push(getCity() + '/organisaatio/' + id);
   }
 
   render () {

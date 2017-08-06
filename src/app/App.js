@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import theme from './theme/global.scss';
 import Application from 'grommet/components/App';
 import Header from 'grommet/components/Header';
@@ -15,19 +14,17 @@ export default class App extends Component {
 
   render () {
     return (
-      <MuiThemeProvider>
-          <Application centered={false}>
-            <Header size={"large"} className={theme.header}>
-              <Anchor className={theme.headerTitle} href={"https://6aika.fi/kaupungit"} target={"_blank"}>#6Aika</Anchor>
-              <Heading align={"center"} strong tag={"h1"} uppercase>Decisions API React Client</Heading>
-            </Header>
-            <Section className={theme.app}>
-              {this.props.children}
-            </Section>
-            <Footer size={"large"} className={theme.footer}>
-            </Footer>
-          </Application>
-      </MuiThemeProvider>
+      <Application centered={false}>
+        <Header size={"large"} className={theme.header}>
+          <Anchor className={theme.headerTitle} href={"https://6aika.fi/kaupungit"} target={"_blank"}>#6Aika</Anchor>
+          <Heading align={"center"} strong tag={"h1"} uppercase>Decisions API React Client</Heading>
+        </Header>
+        <Section className={theme.app}>
+          {this.props.children}
+        </Section>
+        <Footer size={"large"} className={theme.footer}>
+        </Footer>
+      </Application>
     );
   }
 }

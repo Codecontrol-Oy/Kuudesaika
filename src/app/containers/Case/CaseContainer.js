@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import theme from '../../theme/global.scss';
 import axios from 'axios';
 import Section from 'grommet/components/Section';
-import Anchor from 'grommet/components/Section';
+import Anchor from 'grommet/components/Anchor';
 import Article from 'grommet/components/Article';
 import Label from 'grommet/components/Label';
 import Timestamp from 'grommet/components/Timestamp';
@@ -13,6 +13,7 @@ import Heading from 'grommet/components/Heading';
 import { CaseGeo, Loader, CaseMap } from 'Components';
 import {browserHistory} from 'react-router';
 import { fetchLatest, fetchCase, setCity, getCity } from 'Actions';
+import InformationIcon from 'grommet/components/icons/base/CircleInformation';
 
 @connect((store) => {
 	return {
@@ -80,7 +81,10 @@ export default class CaseContainer extends React.Component {
 						{action.event ? ' ' + action.event.organization.name : ' ' + action.post.organization.name} kokouksessa.
 					</Heading>
 					{action.post && <Label>Lausunnonantaja: {action.post.label}</Label>}
-					<Anchor onClick={() => self.onLinkAction(action.event ? action.event.organization.id : action.post.organization.id)} >Siirry</Anchor>
+					<Anchor href="#" icon={<InformationIcon />}
+					primary={true}
+					label='Siirry organisaatioon'
+					onClick={() => self.onLinkAction(action.event ? action.event.organization.id : action.post.organization.id)}/>
 				</AccordionPanel>);
 			});
 		}
