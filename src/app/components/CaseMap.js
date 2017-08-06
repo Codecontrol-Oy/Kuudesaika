@@ -9,13 +9,8 @@ import Heading from 'grommet/components/Heading';
 import Anchor from 'grommet/components/Anchor';
 import {browserHistory} from 'react-router';
 import {getCity} from 'Actions';
-import CheckMarkIcon from 'grommet/components/icons/base/Checkmark';
-import InformationIcon from 'grommet/components/icons/base/CircleInformation';
-import ArchivedIcon from 'grommet/components/icons/base/Archive';
-import RejectedIcon from 'grommet/components/icons/base/Close';
-import ReturnedIcon from 'grommet/components/icons/base/Cycle';
 import Timestamp from 'grommet/components/Timestamp';
-import theme from '../theme/global.scss';
+import {ActionResolution} from 'Components';
 
 export default class CaseMap extends React.Component {
   constructor (props) {
@@ -38,39 +33,7 @@ export default class CaseMap extends React.Component {
       }
   }
 
-  getResolution = (value) => {
-        switch (value) {
-            case 'PASSED': {
-                return <Heading className={theme.marginTop} tag={"h4"} uppercase><CheckMarkIcon colorIndex={"ok"} /> Hyväksytty ehdotuksen mukaan</Heading>;
-            }
-            case 'PASSED_MODIFIED': {
-                return <Heading className={theme.marginTop} tag={"h4"} uppercase><CheckMarkIcon colorIndex={"ok"} /> Hyväksytty esittelijän ehdotuksesta poiketen</Heading>;
-            }
-            case 'PASSED_REVISED': {
-                return <Heading className={theme.marginTop} tag={"h4"} uppercase><CheckMarkIcon colorIndex={"ok"} /> Hyväksytty esittelijän muutetun ehdotuksen mukaan</Heading>;
-            }
-            case 'PASSED_VOTED': {
-                return <Heading className={theme.marginTop} tag={"h4"} uppercase><CheckMarkIcon colorIndex={"ok"} /> Hyväksytty ehdotuksen mukaan äänestyksin</Heading>;
-            }
-            case '': {
-                return <Heading className={theme.marginTop} tag={"h4"} uppercase><InformationIcon colorIndex={"unknown"} /> Ei tietoa päätöksestä</Heading>;
-            }
-            case 'NOTED': {
-                return <Heading className={theme.marginTop} tag={"h4"} uppercase><InformationIcon colorIndex={"unknown"} /> Merkittiin tiedoksi</Heading>;
-            }
-            case 'TABLED': {
-                return <Heading className={theme.marginTop} tag={"h4"} uppercase><ArchivedIcon colorIndex={"unknown"} /> Pöydätty</Heading>;
-            }
-            case 'REJECTED': {
-                return <Heading className={theme.marginTop} tag={"h4"} uppercase><RejectedIcon colorIndex={"critical"} /> Hylätty</Heading>;
-            }
-            case 'RETURNED': {
-                return <Heading className={theme.marginTop} tag={"h4"} uppercase><ReturnedIcon colorIndex={"warning"} /> Palautettu</Heading>;
-            }
-            default:
-                return <Heading className={theme.marginTop} tag={"h4"} uppercase><ReturnedIcon colorIndex={"warning"} />-</Heading>;
-        }
-  }
+
 
   gatherCaseMap = () => {
     const categories = [];
@@ -103,7 +66,7 @@ export default class CaseMap extends React.Component {
                               pad={"small"}
                               label={organization.classification}
                               heading={organization.name}
-                              description={<Section>{startDate && <b><Timestamp fields={"date"} value={startDate}/></b>}<Article>{this.props.actions[i].title}</Article><Article>{this.getResolution(this.props.actions[i].resolution)}</Article></Section>}
+                              description={<Section>{startDate && <b><Timestamp fields={"date"} value={startDate}/></b>}<Article>{this.props.actions[i].title}</Article><Article><ActionResolution resolution={this.props.actions[i].resolution} /></Article></Section>}
                               link={<Anchor onClick={() => this.openOrganization(this.state.selectedOrganization)} label={"siirry organisaatioon"} />}
                               >
                         </Card>

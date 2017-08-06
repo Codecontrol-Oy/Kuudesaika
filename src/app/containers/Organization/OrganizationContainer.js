@@ -10,7 +10,7 @@ import Timestamp from 'grommet/components/Timestamp';
 import Accordion from 'grommet/components/Accordion';
 import AccordionPanel from 'grommet/components/AccordionPanel';
 import Heading from 'grommet/components/Heading';
-import {OrganizationMap, Loader} from 'Components';
+import {OrganizationMap, Loader, ActionResolution} from 'Components';
 import {browserHistory} from 'react-router';
 import {fetchOrganization, fetchOrganizations, setCity, getCity} from 'Actions';
 
@@ -92,7 +92,7 @@ export default class OrganizationContainer extends React.Component {
                                             </Article>
                                         }
                                         {action.fetchedPost && <Article><Label>Lausunnonantaja: {action.fetchedPost.label}</Label></Article> }
-                                            <Article><div dangerouslySetInnerHTML={{__html: para.hypertext}}></div></Article>
+                                            <Article><div dangerouslySetInnerHTML={{__html: para.hypertext}}></div><ActionResolution resolution={action.resolution}/></Article>
                                         </Section>);
                 });
             });
