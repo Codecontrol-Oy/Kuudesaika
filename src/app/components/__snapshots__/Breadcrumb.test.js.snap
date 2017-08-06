@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Breadcrumb /> Should match snapshot 1`] = `
+<Paragraph
+  style={
+    Object {
+      "marginBottom": "0px",
+      "marginLeft": "12px",
+      "marginTop": "0px",
+    }
+  }
+>
+  <div>
+    <Anchor
+      animateIcon={true}
+      href="/"
+      method="push"
+      tag="a"
+    >
+      Kaupunkivalinta
+    </Anchor>
+     - 
+    <Anchor
+      animateIcon={true}
+      href="/null"
+      method="push"
+      tag="a"
+    />
+  </div>
+</Paragraph>
+`;

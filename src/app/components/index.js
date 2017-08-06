@@ -10,3 +10,4 @@ export {default as OrganizationSearchResult} from './OrganizationSearchResult.js
 export {default as OrganizationMap} from './OrganizationMap.js';
 export {default as CaseMap} from './CaseMap.js';
 export {default as CaseGeo} from './CaseGeo.js';
+export {default as Breadcrumb} from './Breadcrumb.js';
