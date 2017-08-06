@@ -38,7 +38,7 @@ exports[`<CaseMap /> Should match snapshot 1`] = `
             "id": "category-sections",
             "items": Array [
               Object {
-                "id": "child-1",
+                "id": "1",
                 "label": "Kaupunginhallitus",
                 "node": <Card
                   a11yTitle="Card"
@@ -91,7 +91,7 @@ exports[`<CaseMap /> Should match snapshot 1`] = `
       />,
               },
               Object {
-                "id": "child-2",
+                "id": "2",
                 "label": "Kaupunginhallitus",
                 "node": <Card
                   a11yTitle="Card"
@@ -149,11 +149,11 @@ exports[`<CaseMap /> Should match snapshot 1`] = `
         ],
         "links": Array [
           Object {
-            "childId": "child-1",
+            "childId": "1",
             "parentId": "selected-1",
           },
           Object {
-            "childId": "child-2",
+            "childId": "2",
             "parentId": "selected-1",
           },
         ],
