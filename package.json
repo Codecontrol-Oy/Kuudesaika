@@ -15,14 +15,7 @@
     },
     "snapshotSerializers": [
       "<rootDir>/node_modules/enzyme-to-json/serializer"
-    ],
-    "testResultsProcessor": "./node_modules/jest-html-reporter",
-    "jest-html-reporter": {
-        "pageTitle": "#6Aika Decisions API React client",
-        "outputPath": "test-report/index.html",
-        "includeFailureMsg": false,
-        "styleOverridePath": "src/teststyle.css"
-    }
+    ]
   },
   "contributors": [
     {
