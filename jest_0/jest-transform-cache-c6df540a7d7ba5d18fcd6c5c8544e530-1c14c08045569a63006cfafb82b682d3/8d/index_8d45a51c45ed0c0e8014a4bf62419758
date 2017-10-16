@@ -1,3 +1,0 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });var _organizationReducer = require('./organizationReducer');Object.defineProperty(exports, 'organization', { enumerable: true, get: function get() {return _interopRequireDefault(_organizationReducer).default;} });var _eventReducer = require('./eventReducer');Object.defineProperty(exports, 'event', { enumerable: true, get: function get() {return _interopRequireDefault(_eventReducer).
-    default;} });var _caseReducer = require('./caseReducer');Object.defineProperty(exports, 'case', { enumerable: true, get: function get() {return _interopRequireDefault(_caseReducer).
-    default;} });function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
