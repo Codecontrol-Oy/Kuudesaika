@@ -1,0 +1,64 @@
+'use strict';Object.defineProperty(exports, "__esModule", { value: true });exports.default = undefined;var _createClass = function () {function defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}return function (Constructor, protoProps, staticProps) {if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;};}();var _react = require('react');var _react2 = _interopRequireDefault(_react);
+var _propTypes = require('prop-types');var _propTypes2 = _interopRequireDefault(_propTypes);
+var _Checkmark = require('grommet/components/icons/base/Checkmark');var _Checkmark2 = _interopRequireDefault(_Checkmark);
+var _CircleInformation = require('grommet/components/icons/base/CircleInformation');var _CircleInformation2 = _interopRequireDefault(_CircleInformation);
+var _Archive = require('grommet/components/icons/base/Archive');var _Archive2 = _interopRequireDefault(_Archive);
+var _Close = require('grommet/components/icons/base/Close');var _Close2 = _interopRequireDefault(_Close);
+var _Cycle = require('grommet/components/icons/base/Cycle');var _Cycle2 = _interopRequireDefault(_Cycle);
+var _Heading = require('grommet/components/Heading');var _Heading2 = _interopRequireDefault(_Heading);
+
+var _global = require('../theme/global.scss');var _global2 = _interopRequireDefault(_global);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self, call) {if (!self) {throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call && (typeof call === "object" || typeof call === "function") ? call : self;}function _inherits(subClass, superClass) {if (typeof superClass !== "function" && superClass !== null) {throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);}subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;}var
+
+Breadcrumb = function (_React$Component) {_inherits(Breadcrumb, _React$Component);
+    function Breadcrumb(props) {_classCallCheck(this, Breadcrumb);var _this = _possibleConstructorReturn(this, (Breadcrumb.__proto__ || Object.getPrototypeOf(Breadcrumb)).call(this,
+        props));_this.
+
+
+
+
+
+        getResolution = function (value) {
+            switch (value) {
+                case 'PASSED':{
+                        return _react2.default.createElement(_Heading2.default, { className: _global2.default.marginTop, tag: "h4", uppercase: true }, _react2.default.createElement(_Checkmark2.default, { colorIndex: "ok" }), ' Hyv\xE4ksytty ehdotuksen mukaan');
+                    }
+                case 'PASSED_MODIFIED':{
+                        return _react2.default.createElement(_Heading2.default, { className: _global2.default.marginTop, tag: "h4", uppercase: true }, _react2.default.createElement(_Checkmark2.default, { colorIndex: "ok" }), ' Hyv\xE4ksytty esittelij\xE4n ehdotuksesta poiketen');
+                    }
+                case 'PASSED_REVISED':{
+                        return _react2.default.createElement(_Heading2.default, { className: _global2.default.marginTop, tag: "h4", uppercase: true }, _react2.default.createElement(_Checkmark2.default, { colorIndex: "ok" }), ' Hyv\xE4ksytty esittelij\xE4n muutetun ehdotuksen mukaan');
+                    }
+                case 'PASSED_VOTED':{
+                        return _react2.default.createElement(_Heading2.default, { className: _global2.default.marginTop, tag: "h4", uppercase: true }, _react2.default.createElement(_Checkmark2.default, { colorIndex: "ok" }), ' Hyv\xE4ksytty ehdotuksen mukaan \xE4\xE4nestyksin');
+                    }
+                case '':{
+                        return _react2.default.createElement(_Heading2.default, { className: _global2.default.marginTop, tag: "h4", uppercase: true }, _react2.default.createElement(_CircleInformation2.default, { colorIndex: "unknown" }), ' Ei tietoa p\xE4\xE4t\xF6ksest\xE4');
+                    }
+                case 'NOTED':{
+                        return _react2.default.createElement(_Heading2.default, { className: _global2.default.marginTop, tag: "h4", uppercase: true }, _react2.default.createElement(_CircleInformation2.default, { colorIndex: "unknown" }), ' Merkittiin tiedoksi');
+                    }
+                case 'TABLED':{
+                        return _react2.default.createElement(_Heading2.default, { className: _global2.default.marginTop, tag: "h4", uppercase: true }, _react2.default.createElement(_Archive2.default, { colorIndex: "unknown" }), ' P\xF6yd\xE4tty');
+                    }
+                case 'REJECTED':{
+                        return _react2.default.createElement(_Heading2.default, { className: _global2.default.marginTop, tag: "h4", uppercase: true }, _react2.default.createElement(_Close2.default, { colorIndex: "critical" }), ' Hyl\xE4tty');
+                    }
+                case 'RETURNED':{
+                        return _react2.default.createElement(_Heading2.default, { className: _global2.default.marginTop, tag: "h4", uppercase: true }, _react2.default.createElement(_Cycle2.default, { colorIndex: "warning" }), ' Palautettu');
+                    }
+                default:
+                    return _react2.default.createElement(_Heading2.default, { className: _global2.default.marginTop, tag: "h4", uppercase: true }, _react2.default.createElement(_Cycle2.default, { colorIndex: "warning" }), '-');}
+
+        };_this.state = { action: null };return _this;}_createClass(Breadcrumb, [{ key: 'render', value: function render()
+
+        {
+            return (
+                _react2.default.createElement('div', null,
+                    this.getResolution(this.props.resolution)));
+
+
+        } }]);return Breadcrumb;}(_react2.default.Component);exports.default = Breadcrumb;
+
+
+Breadcrumb.propTypes = {
+    resolution: _propTypes2.default.string };

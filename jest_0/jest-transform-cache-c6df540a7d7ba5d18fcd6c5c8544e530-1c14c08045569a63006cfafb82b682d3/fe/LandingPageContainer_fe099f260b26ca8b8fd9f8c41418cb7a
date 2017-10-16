@@ -1,0 +1,71 @@
+'use strict';Object.defineProperty(exports, "__esModule", { value: true });exports.default = undefined;var _createClass = function () {function defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}return function (Constructor, protoProps, staticProps) {if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;};}();var _react = require('react');var _react2 = _interopRequireDefault(_react);
+var _reactRedux = require('react-redux');
+var _Section = require('grommet/components/Section');var _Section2 = _interopRequireDefault(_Section);
+var _Anchor = require('grommet/components/Anchor');var _Anchor2 = _interopRequireDefault(_Anchor);
+var _Tiles = require('grommet/components/Tiles');var _Tiles2 = _interopRequireDefault(_Tiles);
+var _Card = require('grommet/components/Card');var _Card2 = _interopRequireDefault(_Card);
+var _Image = require('grommet/components/Image');var _Image2 = _interopRequireDefault(_Image);
+var _actions = require('../../actions');
+var _reactRouter = require('react-router');
+var _LandingPageContainer = require('./LandingPageContainer.scss');var _LandingPageContainer2 = _interopRequireDefault(_LandingPageContainer);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self, call) {if (!self) {throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call && (typeof call === "object" || typeof call === "function") ? call : self;}function _inherits(subClass, superClass) {if (typeof superClass !== "function" && superClass !== null) {throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);}subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;}var
+
+LandingPageContainer = function (_React$Component) {_inherits(LandingPageContainer, _React$Component);
+    function LandingPageContainer(props) {_classCallCheck(this, LandingPageContainer);var _this = _possibleConstructorReturn(this, (LandingPageContainer.__proto__ || Object.getPrototypeOf(LandingPageContainer)).call(this,
+        props));_this.
+
+
+        onSelectCity = function (value) {
+            (0, _actions.setCity)(value);
+            _reactRouter.browserHistory.push('/' + value);
+        };return _this;}_createClass(LandingPageContainer, [{ key: 'render', value: function render()
+
+        {var _this2 = this;
+            return (
+                _react2.default.createElement(_Section2.default, null,
+                    _react2.default.createElement(_Tiles2.default, null,
+                        _react2.default.createElement(_Card2.default, {
+                            heading: "Helsinki",
+                            thumbnail: _react2.default.createElement(_Image2.default, { alt: "temporary image", src: 'http://lorempixel.com/640/480/city?' + 1 }),
+                            headingStrong: true,
+                            onClick: function onClick() {return _this2.onSelectCity('Helsinki');},
+                            link: _react2.default.createElement(_Anchor2.default, { onClick: function onClick() {return _this2.onSelectCity('Helsinki');}, label: "siirry" }),
+                            className: _LandingPageContainer2.default.cardShadow }),
+                        _react2.default.createElement(_Card2.default, {
+                            heading: "Espoo",
+                            thumbnail: _react2.default.createElement(_Image2.default, { alt: "temporary image", src: 'http://lorempixel.com/640/480/city?' + 2 }),
+                            headingStrong: true,
+                            onClick: function onClick() {return _this2.onSelectCity('Espoo');},
+                            link: _react2.default.createElement(_Anchor2.default, { onClick: function onClick() {return _this2.onSelectCity('Espoo');}, label: "siirry" }),
+                            className: _LandingPageContainer2.default.cardShadow }),
+                        _react2.default.createElement(_Card2.default, {
+                            heading: "Turku",
+                            thumbnail: _react2.default.createElement(_Image2.default, { alt: "temporary image", src: 'http://lorempixel.com/640/480/city?' + 3 }),
+                            headingStrong: true,
+                            onClick: function onClick() {return _this2.onSelectCity('Turku');},
+                            link: _react2.default.createElement(_Anchor2.default, { onClick: function onClick() {return _this2.onSelectCity('Turku');}, label: "siirry" }),
+                            className: _LandingPageContainer2.default.cardShadow }),
+                        _react2.default.createElement(_Card2.default, {
+                            heading: "Oulu",
+                            thumbnail: _react2.default.createElement(_Image2.default, { alt: "temporary image", src: 'http://lorempixel.com/640/480/city?' + 4 }),
+                            headingStrong: true,
+                            onClick: function onClick() {return _this2.onSelectCity('Oulu');},
+                            link: _react2.default.createElement(_Anchor2.default, { onClick: function onClick() {return _this2.onSelectCity('Oulu');}, label: "siirry" }),
+                            className: _LandingPageContainer2.default.cardShadow }),
+                        _react2.default.createElement(_Card2.default, {
+                            heading: "Tampere",
+                            thumbnail: _react2.default.createElement(_Image2.default, { alt: "temporary image", src: 'http://lorempixel.com/640/480/city?' + 5 }),
+                            headingStrong: true,
+                            onClick: function onClick() {return _this2.onSelectCity('Tampere');},
+                            link: _react2.default.createElement(_Anchor2.default, { onClick: function onClick() {return _this2.onSelectCity('Tampere');}, label: "siirry" }),
+                            className: _LandingPageContainer2.default.cardShadow }),
+                        _react2.default.createElement(_Card2.default, {
+                            heading: "Vantaa",
+                            thumbnail: _react2.default.createElement(_Image2.default, { alt: "temporary image", src: 'http://lorempixel.com/640/480/city?' + 6 }),
+                            headingStrong: true,
+                            onClick: function onClick() {return _this2.onSelectCity('Vantaa');},
+                            link: _react2.default.createElement(_Anchor2.default, { onClick: function onClick() {return _this2.onSelectCity('Vantaa');}, label: "siirry" }),
+                            className: _LandingPageContainer2.default.cardShadow }))));
+
+
+
+        } }]);return LandingPageContainer;}(_react2.default.Component);exports.default = LandingPageContainer;

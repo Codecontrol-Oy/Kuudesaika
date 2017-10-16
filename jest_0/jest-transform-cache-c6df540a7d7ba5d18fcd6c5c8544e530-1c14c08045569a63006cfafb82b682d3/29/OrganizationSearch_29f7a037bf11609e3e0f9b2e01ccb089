@@ -1,0 +1,51 @@
+'use strict';Object.defineProperty(exports, "__esModule", { value: true });exports.default = undefined;var _createClass = function () {function defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}return function (Constructor, protoProps, staticProps) {if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;};}();var _react = require('react');var _react2 = _interopRequireDefault(_react);
+var _Section = require('grommet/components/Section');var _Section2 = _interopRequireDefault(_Section);
+var _Search = require('grommet/components/Search');var _Search2 = _interopRequireDefault(_Search);
+var _List = require('grommet/components/List');var _List2 = _interopRequireDefault(_List);
+var _Article = require('grommet/components/Article');var _Article2 = _interopRequireDefault(_Article);
+var _OrganizationSearchResult = require('./OrganizationSearchResult.js');var _OrganizationSearchResult2 = _interopRequireDefault(_OrganizationSearchResult);
+var _propTypes = require('prop-types');var _propTypes2 = _interopRequireDefault(_propTypes);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self, call) {if (!self) {throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call && (typeof call === "object" || typeof call === "function") ? call : self;}function _inherits(subClass, superClass) {if (typeof superClass !== "function" && superClass !== null) {throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);}subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;}var
+
+OrganizationSearch = function (_React$Component) {_inherits(OrganizationSearch, _React$Component);
+  function OrganizationSearch(props) {_classCallCheck(this, OrganizationSearch);var _this = _possibleConstructorReturn(this, (OrganizationSearch.__proto__ || Object.getPrototypeOf(OrganizationSearch)).call(this,
+    props));_this.
+
+
+
+
+
+
+    onSearch = function (event) {
+      var Results = [];
+      var searchStarted = false;
+      if (event.target.value && event.target.value.length > 2) {
+        searchStarted = true;
+        for (var i = 0; i < _this.props.organizations.length - 1; i++) {
+          var resultsFound = _this.props.organizations[i].name.toLowerCase().includes(event.target.value.toLowerCase());
+          if (resultsFound) {
+            Results.push(_react2.default.createElement(_OrganizationSearchResult2.default, { key: Results.length + 1, organization: _this.props.organizations[i] }));
+          }
+        }
+      } else {
+        searchStarted = false;
+      }
+      if (Results.length > 0) {
+        _this.setState({ searchResults: _react2.default.createElement(_List2.default, null, Results), searchStarted: searchStarted });
+      } else {
+        _this.setState({ searchResults: null, searchStarted: searchStarted });
+      }
+    };_this.state = { searchResults: null, searchStarted: false };return _this;}_createClass(OrganizationSearch, [{ key: 'render', value: function render()
+    {
+
+      return (
+        _react2.default.createElement(_Section2.default, null,
+          _react2.default.createElement(_Search2.default, { onDOMChange: this.onSearch, placeHolder: "Hakusana", responsive: false, inline: true, size: "medium" }),
+          this.state.searchResults ? this.state.searchResults : this.state.searchStarted ? _react2.default.createElement(_Article2.default, null, 'Ei tuloksia.') : ''));
+
+
+
+    } }]);return OrganizationSearch;}(_react2.default.Component);exports.default = OrganizationSearch;
+
+
+OrganizationSearch.propTypes = {
+  organizations: _propTypes2.default.array };

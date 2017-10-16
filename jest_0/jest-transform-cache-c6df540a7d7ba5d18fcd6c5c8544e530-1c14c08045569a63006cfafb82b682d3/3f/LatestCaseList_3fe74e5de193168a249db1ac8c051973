@@ -1,0 +1,57 @@
+'use strict';Object.defineProperty(exports, "__esModule", { value: true });exports.default = undefined;var _createClass = function () {function defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}return function (Constructor, protoProps, staticProps) {if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;};}();var _react = require('react');var _react2 = _interopRequireDefault(_react);
+var _LatestCase = require('./LatestCase.js');var _LatestCase2 = _interopRequireDefault(_LatestCase);
+var _propTypes = require('prop-types');var _propTypes2 = _interopRequireDefault(_propTypes);
+var _axios = require('axios');var _axios2 = _interopRequireDefault(_axios);
+var _Section = require('grommet/components/Section');var _Section2 = _interopRequireDefault(_Section);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self, call) {if (!self) {throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call && (typeof call === "object" || typeof call === "function") ? call : self;}function _inherits(subClass, superClass) {if (typeof superClass !== "function" && superClass !== null) {throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);}subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;}var
+
+LatestCaseList = function (_React$Component) {_inherits(LatestCaseList, _React$Component);
+    function LatestCaseList(props) {_classCallCheck(this, LatestCaseList);var _this = _possibleConstructorReturn(this, (LatestCaseList.__proto__ || Object.getPrototypeOf(LatestCaseList)).call(this,
+        props));_this.
+
+
+
+
+
+        componentDidMount = function () {
+            _this.onFetchFunctions(_this);
+        };_this.
+
+        onFetchFunctions = function (self) {
+            if (_this.props.latestCases) {
+                _this.props.latestCases.map(function (obj) {
+                    _axios2.default.get(obj.function).
+                    then(function (response) {
+                        var cases = self.state.latest_cases || [];
+                        cases.push(_react2.default.createElement(_LatestCase2.default, { url: obj.url,
+                            id: obj.id,
+                            data_source: obj.data_source,
+                            actions: obj.actions,
+                            geometries: obj.geometries,
+                            created_at: obj.created_at,
+                            modified_at: obj.modified_at,
+                            origin_id: obj.origin_id,
+                            title: obj.title,
+                            register_id: obj.register_id,
+                            'function': obj.function,
+                            attachments: obj.attachments,
+                            subject: response.data.name,
+                            key: obj.id + '_latestcase' }));
+
+                        self.setState({ latest_cases: cases });
+                    });
+
+                });
+            }
+        };_this.state = { latest_cases: [] };return _this;}_createClass(LatestCaseList, [{ key: 'render', value: function render()
+
+        {
+            return (
+                _react2.default.createElement(_Section2.default, null,
+                    this.props.latestCases && this.state.latest_cases));
+
+
+        } }]);return LatestCaseList;}(_react2.default.Component);exports.default = LatestCaseList;
+
+
+LatestCaseList.propTypes = {
+    latestCases: _propTypes2.default.array };

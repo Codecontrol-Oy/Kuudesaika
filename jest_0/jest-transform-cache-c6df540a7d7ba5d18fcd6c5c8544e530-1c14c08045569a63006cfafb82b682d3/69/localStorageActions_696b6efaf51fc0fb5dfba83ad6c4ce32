@@ -1,0 +1,42 @@
+'use strict';Object.defineProperty(exports, "__esModule", { value: true });exports.
+
+
+getAPIUrl = getAPIUrl;exports.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+setCity = setCity;exports.
+
+
+
+
+
+getCity = getCity;var _constants = require('../constants.js');var constants = _interopRequireWildcard(_constants);var _settings = require('../settings.js');var _settings2 = _interopRequireDefault(_settings);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _interopRequireWildcard(obj) {if (obj && obj.__esModule) {return obj;} else {var newObj = {};if (obj != null) {for (var key in obj) {if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key];}}newObj.default = obj;return newObj;}}function getAPIUrl() {var city = localStorage.getItem('city');if (!city) {localStorage.setItem('city', 'Helsinki');}switch (city) {case "Helsinki":{return _settings2.default.API_ROOT_URL_HELSINKI;}case "Vantaa":{return _settings2.default.API_ROOT_URL_VANTAA;}case "Turku":{return _settings2.default.API_ROOT_URL_TURKU;}case "Oulu":{return _settings2.default.API_ROOT_URL_OULU;}case "Tampere":{return _settings2.default.API_ROOT_URL_TAMPERE;}case "Espoo":{return _settings2.default.API_ROOT_URL_ESPOO;}}}function setCity(city) {if (localStorage.getItem('city') != city) {localStorage.setItem('city', city);}}function getCity() {
+    return localStorage.getItem('city');
+}

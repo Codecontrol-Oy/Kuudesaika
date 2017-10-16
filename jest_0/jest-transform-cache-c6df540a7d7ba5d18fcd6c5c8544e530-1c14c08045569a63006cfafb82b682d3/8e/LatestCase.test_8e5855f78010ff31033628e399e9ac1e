@@ -1,0 +1,60 @@
+'use strict';var _react = require('react');var _react2 = _interopRequireDefault(_react);
+var _LatestCase = require('./LatestCase');var _LatestCase2 = _interopRequireDefault(_LatestCase);
+var _Label = require('grommet/components/Label');var _Label2 = _interopRequireDefault(_Label);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+describe("<LatestCase />", function () {
+    it("Matches snapshot", function () {
+        var latestCase = shallow(
+        _react2.default.createElement(_LatestCase2.default, { url: "http://testurl.com",
+            id: 2,
+            data_source: "testSource",
+            actions: null,
+            geometries: null,
+            created_at: "2017-01-1T10:00:00.00000Z",
+            modified_at: "2017-01-1T10:00:00.00000Z",
+            origin_id: "1",
+            title: "Test case",
+            register_id: "CASE 12345-1",
+            'function': null,
+            attachments: null }));
+
+
+        expect(latestCase).toMatchSnapshot();
+    });
+
+    it('should contain correct elements', function () {
+        var latestCase = shallow(_react2.default.createElement(_LatestCase2.default, { url: "http://testurl.com",
+            id: 2,
+            data_source: "testSource",
+            actions: null,
+            geometries: null,
+            created_at: "2017-01-1T10:00:00.00000Z",
+            modified_at: "2017-01-1T10:00:00.00000Z",
+            origin_id: "1",
+            title: "Test case",
+            register_id: "CASE 12345-1",
+            'function': null,
+            attachments: null }));
+        expect(latestCase.find('Card').length).toEqual(1);
+    });
+
+    it('Latest case should contain correct values', function () {
+        var latestCase = shallow(_react2.default.createElement(_LatestCase2.default, { url: "http://testurl.com",
+            id: 2,
+            data_source: "testSource",
+            actions: null,
+            geometries: null,
+            created_at: "2017-01-1T10:00:00.00000Z",
+            modified_at: "2017-01-1T10:00:00.00000Z",
+            origin_id: "1",
+            title: "Test case",
+            register_id: "CASE 12345-1",
+            'function': null,
+            attachments: null,
+            subject: "Test subject" }));
+        expect(latestCase.find('Card').prop("label")).toEqual("CASE 12345-1");
+        expect(latestCase.find('Card').props().description).toEqual(_react2.default.createElement(_Label2.default, { announce: true }, 'Test case'));
+        expect(latestCase.find('Card').props().heading).toEqual("Test subject");
+    });
+
+});

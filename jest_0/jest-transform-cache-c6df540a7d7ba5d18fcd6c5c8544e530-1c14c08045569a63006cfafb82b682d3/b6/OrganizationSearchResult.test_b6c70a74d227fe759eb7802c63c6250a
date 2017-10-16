@@ -1,0 +1,21 @@
+'use strict';var _react = require('react');var _react2 = _interopRequireDefault(_react);
+var _OrganizationSearchResult = require('./OrganizationSearchResult');var _OrganizationSearchResult2 = _interopRequireDefault(_OrganizationSearchResult);
+var _Organization = require('../../../mock/Organization.json');var _Organization2 = _interopRequireDefault(_Organization);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+describe('<OrganizationSearchResults />', function () {
+
+    it('Should match snapshot', function () {
+        var organizationSearchResult = mount(
+        _react2.default.createElement(_OrganizationSearchResult2.default, { organization: _Organization2.default, onClick: function onClick() {} }));
+
+        expect(organizationSearchResult).toMatchSnapshot();
+    });
+
+    it('Should render components', function () {
+        var organizationSearchResult = mount(
+        _react2.default.createElement(_OrganizationSearchResult2.default, { organization: _Organization2.default, onClick: function onClick() {} }));
+
+        expect(organizationSearchResult.find('ListItem').length).toEqual(1);
+        expect(organizationSearchResult.find('LatestEvent').length).toEqual(1);
+    });
+});

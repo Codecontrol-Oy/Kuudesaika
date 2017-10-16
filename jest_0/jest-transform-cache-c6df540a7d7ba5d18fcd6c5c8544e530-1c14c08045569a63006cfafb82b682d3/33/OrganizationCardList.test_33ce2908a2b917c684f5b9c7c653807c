@@ -1,0 +1,20 @@
+'use strict';var _react = require('react');var _react2 = _interopRequireDefault(_react);
+var _OrganizationCardList = require('./OrganizationCardList');var _OrganizationCardList2 = _interopRequireDefault(_OrganizationCardList);
+var _Organizations = require('../../../mock/Organizations.json');var _Organizations2 = _interopRequireDefault(_Organizations);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+describe('<OrganizationCardList />', function () {
+
+    it('Should match snapshot', function () {
+        var organizationCardList = mount(
+        _react2.default.createElement(_OrganizationCardList2.default, { organizations: _Organizations2.default.organizations }));
+
+        expect(_OrganizationCardList2.default).toMatchSnapshot();
+    });
+
+    it('Should render correct elements', function () {
+        var organizationCardList = mount(
+        _react2.default.createElement(_OrganizationCardList2.default, { organizations: _Organizations2.default.organizations }));
+
+        expect(organizationCardList.find('OrganizationCard').length).toEqual(10);
+    });
+});

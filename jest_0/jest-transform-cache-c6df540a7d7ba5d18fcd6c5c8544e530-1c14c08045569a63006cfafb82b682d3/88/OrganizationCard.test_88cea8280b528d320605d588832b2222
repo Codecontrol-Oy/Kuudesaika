@@ -1,0 +1,55 @@
+'use strict';
+
+
+
+
+jest.mock('react-router', function () {return { browserHistory: { push: jest.fn() } };});var _react = require('react');var _react2 = _interopRequireDefault(_react);var _OrganizationCard = require('./OrganizationCard');var _OrganizationCard2 = _interopRequireDefault(_OrganizationCard);var _Organization = require('../../../mock/Organization.json');var _Organization2 = _interopRequireDefault(_Organization);var _sinon = require('sinon');var _sinon2 = _interopRequireDefault(_sinon);var _reactRouter = require('react-router');function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+describe('<OrganizationCard />', function () {
+
+    it('should match snapshot', function () {
+        var organizationCard = shallow(_react2.default.createElement(_OrganizationCard2.default, { name: _Organization2.default.name,
+            id: _Organization2.default.id,
+            events: _Organization2.default.events,
+            posts: _Organization2.default.posts,
+            created_at: _Organization2.default.created_at,
+            modified_at: _Organization2.default.modified_at,
+            classification: _Organization2.default.classification,
+            data_source: _Organization2.default.data_source }));
+        expect(organizationCard).toMatchSnapshot();
+    });
+
+    it('Should contain correct elements and properties', function () {
+        var organizationCard = mount(_react2.default.createElement(_OrganizationCard2.default, { name: _Organization2.default.name,
+            id: _Organization2.default.id,
+            events: _Organization2.default.events,
+            posts: _Organization2.default.posts,
+            created_at: _Organization2.default.created_at,
+            modified_at: _Organization2.default.modified_at,
+            classification: _Organization2.default.classification,
+            data_source: _Organization2.default.data_source }));
+
+        expect(organizationCard.find('Card').length).toEqual(1);
+        var card = organizationCard.find('Card');
+        expect(card.prop('label')).toEqual(_Organization2.default.data_source + " - " + _Organization2.default.classification);
+        expect(card.prop('heading')).toEqual(_Organization2.default.name);
+    });
+
+    it('Should redirect after link click', function () {
+        var organizationCard = mount(_react2.default.createElement(_OrganizationCard2.default, { name: _Organization2.default.name,
+            id: _Organization2.default.id,
+            events: _Organization2.default.events,
+            posts: _Organization2.default.posts,
+            created_at: _Organization2.default.created_at,
+            modified_at: _Organization2.default.modified_at,
+            classification: _Organization2.default.classification,
+            data_source: _Organization2.default.data_source }));
+
+        var callback = _sinon2.default.spy(organizationCard.instance(), 'onLinkClick');
+        expect(organizationCard.find('a').length).toEqual(1);
+        organizationCard.simulate('click');
+        expect(callback.calledOnce).toEqual(true);
+        expect(_reactRouter.browserHistory.push).toHaveBeenCalled();
+        expect(callback.firstCall.args[0]).toEqual(_Organization2.default.id);
+    });
+});

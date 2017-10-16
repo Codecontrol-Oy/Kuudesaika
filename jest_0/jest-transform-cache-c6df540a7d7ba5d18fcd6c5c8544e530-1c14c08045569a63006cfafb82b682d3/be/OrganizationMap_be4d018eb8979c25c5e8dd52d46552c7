@@ -1,0 +1,155 @@
+'use strict';Object.defineProperty(exports, "__esModule", { value: true });exports.default = undefined;var _createClass = function () {function defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}return function (Constructor, protoProps, staticProps) {if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;};}();var _react = require('react');var _react2 = _interopRequireDefault(_react);
+var _propTypes = require('prop-types');var _propTypes2 = _interopRequireDefault(_propTypes);
+var _Map = require('grommet/components/Map');var _Map2 = _interopRequireDefault(_Map);
+var _Box = require('grommet/components/Box');var _Box2 = _interopRequireDefault(_Box);
+
+var _reactRouter = require('react-router');
+var _actions = require('../actions');function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self, call) {if (!self) {throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call && (typeof call === "object" || typeof call === "function") ? call : self;}function _inherits(subClass, superClass) {if (typeof superClass !== "function" && superClass !== null) {throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);}subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;}var
+
+OrganizationMap = function (_React$Component) {_inherits(OrganizationMap, _React$Component);
+    function OrganizationMap(props) {_classCallCheck(this, OrganizationMap);var _this = _possibleConstructorReturn(this, (OrganizationMap.__proto__ || Object.getPrototypeOf(OrganizationMap)).call(this,
+        props));_this.
+
+
+
+
+
+        openOrganization = function (id) {
+            if (id) {
+                _reactRouter.browserHistory.push(id);
+                window.location.reload();
+            }
+        };_this.
+
+        selectOrganization = function (index) {
+            if (_this.state.selectedOrganization !== index) {
+                _this.setState({ selectedOrganization: index });
+            }
+        };_this.
+
+        getParents = function (organization) {
+            var results = [];
+            _this.findParent(organization.url, results);
+            return results;
+        };_this.
+
+        getChilds = function (organization) {
+            var results = [];
+            _this.findChild(organization.id, results);
+            return results;
+        };_this.
+
+        findChild = function (child, array) {
+            for (var i = 0; i < _this.props.organizations.length; i++) {
+                if (_this.props.organizations[i].parent) {
+                    var parent = _this.props.organizations[i].parent;
+                    var splitArray = parent.split('/');
+                    var parent_id = splitArray[splitArray.length - 2];
+                    if (parent_id === child.toString()) {
+                        array.push(_this.props.organizations[i]);
+                        _this.findChild(_this.props.organizations[i].id, array);
+                    }
+                }
+            }
+        };_this.
+
+        findParent = function (parent, array) {
+            if (parent) {
+                var splitArray = parent.split('/');
+                var parent_id = splitArray[splitArray.length - 2];
+                for (var i = 0; i < _this.props.organizations.length; i++) {
+                    if (_this.props.organizations[i].id.toString() === parent_id) {
+                        if (_this.props.organizations[i].id !== _this.props.organization.id) {
+                            array.push(_this.props.organizations[i]);
+                        }
+                        if (_this.props.organizations[i].parent) {
+                            _this.findParent(_this.props.organizations[i].parent, array);
+                        }
+                        break;
+                    }
+                }
+            }
+        };_this.
+
+        gatherOrganizationMap = function () {
+            var categories = [];
+            var parents = _this.getParents(_this.props.organization);
+            var childs = _this.getChilds(_this.props.organization);
+            var links = [];
+
+            var organizationList = [];
+            organizationList = organizationList.concat(parents);
+            organizationList.push(_this.props.organization);
+            organizationList = organizationList.concat(childs);
+
+            for (var i = 0; i < organizationList.length; i++) {
+                var found = false;
+                for (var x = 0; x < categories.length; x++) {
+                    if (categories[x].label === organizationList[i].classification) {
+                        found = true;
+                    }
+                }
+                if (!found) {
+                    categories.push({
+                        'id': 'category-' + organizationList[i].id,
+                        'label': organizationList[i].classification,
+                        'items': [] });
+
+                }
+
+            }
+
+
+            for (var _i = 0; _i < organizationList.length; _i++) {
+                for (var n = 0; n < categories.length; n++) {
+                    if (categories[n].label === organizationList[_i].classification) {
+                        if (organizationList[_i].id === _this.props.organization.id) {
+                            categories[n].items.push({
+                                'id': organizationList[_i].id.toString(),
+                                'label': organizationList[_i].name,
+                                'node': _react2.default.createElement(_Box2.default, { colorIndex: 'neutral-1', pad: "small" }, organizationList[_i].name) });
+
+                        } else {
+                            categories[n].items.push({
+                                'id': organizationList[_i].id.toString(),
+                                'label': organizationList[_i].name });
+
+                        }
+                        break;
+                    }
+                }
+            }
+
+            for (var _i2 = 0; _i2 < organizationList.length; _i2++) {
+                if (organizationList[_i2].parent) {
+                    var parent = organizationList[_i2].parent;
+                    var organization = organizationList[_i2];
+                    var splitArray = parent.split('/');
+                    var parent_id = splitArray[splitArray.length - 2];
+                    for (var _n = 0; _n < categories.length; _n++) {
+                        for (var f = 0; f < categories[_n].items.length; f++) {
+                            if (categories[_n].items[f].id === parent_id) {
+                                links.push({ 'parentId': parent_id.toString(), 'childId': organization.id.toString() });
+                            }
+                        }
+                    }
+                }
+            }
+            return _react2.default.createElement(_Map2.default, { onClick: function onClick() {return _this.openOrganization(_this.state.selectedOrganization);}, onActive: _this.selectOrganization, active: _this.state.selectedOrganization, vertical: false, data: { 'categories': categories, 'links': links } });
+
+        };_this.state = { selectedOrganization: null };return _this;}_createClass(OrganizationMap, [{ key: 'render', value: function render()
+
+        {
+            var organizationMap = this.gatherOrganizationMap();
+            return (
+                _react2.default.createElement(_Box2.default, null,
+                    _react2.default.createElement('span', null, 'moro'),
+                    organizationMap));
+
+
+        } }]);return OrganizationMap;}(_react2.default.Component);exports.default = OrganizationMap;
+
+
+OrganizationMap.propTypes = {
+    organization: _propTypes2.default.object,
+    organizations: _propTypes2.default.array };

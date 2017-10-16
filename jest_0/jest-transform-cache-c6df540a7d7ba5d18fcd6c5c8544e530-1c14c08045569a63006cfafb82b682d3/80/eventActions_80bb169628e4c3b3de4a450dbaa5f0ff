@@ -1,0 +1,16 @@
+'use strict';Object.defineProperty(exports, "__esModule", { value: true });exports.
+
+
+
+
+
+fetchLatestEvents = fetchLatestEvents;var _constants = require('../constants.js');var constants = _interopRequireWildcard(_constants);var _store = require('../store');var _store2 = _interopRequireDefault(_store);var _axios = require('axios');var _axios2 = _interopRequireDefault(_axios);var _settings = require('../settings.js');var _settings2 = _interopRequireDefault(_settings);var _ = require('./');function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _interopRequireWildcard(obj) {if (obj && obj.__esModule) {return obj;} else {var newObj = {};if (obj != null) {for (var key in obj) {if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key];}}newObj.default = obj;return newObj;}}function fetchLatestEvents() {
+   _axios2.default.get(_settings2.default.API_ROOT_URL + _settings2.default.EVENT + '?limit=1').
+   then(function (response) {
+      var offset = response.data.count - 10;
+      _store2.default.dispatch({
+         type: constants.EVENT_FETCH_LATEST,
+         payload: _axios2.default.get((0, _.getAPIUrl)() + _settings2.default.EVENT + '?limit=10&offset=' + offset) });
+
+   });
+}

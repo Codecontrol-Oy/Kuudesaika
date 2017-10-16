@@ -1,0 +1,67 @@
+'use strict';Object.defineProperty(exports, "__esModule", { value: true });exports.default = undefined;var _createClass = function () {function defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}return function (Constructor, protoProps, staticProps) {if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;};}();var _react = require('react');var _react2 = _interopRequireDefault(_react);
+var _propTypes = require('prop-types');var _propTypes2 = _interopRequireDefault(_propTypes);
+var _reactLeaflet = require('react-leaflet');function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self, call) {if (!self) {throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call && (typeof call === "object" || typeof call === "function") ? call : self;}function _inherits(subClass, superClass) {if (typeof superClass !== "function" && superClass !== null) {throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);}subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;}var
+
+
+CaseGeo = function (_React$Component) {_inherits(CaseGeo, _React$Component);
+    function CaseGeo(props) {_classCallCheck(this, CaseGeo);var _this = _possibleConstructorReturn(this, (CaseGeo.__proto__ || Object.getPrototypeOf(CaseGeo)).call(this,
+        props));_this.
+
+
+
+
+
+
+
+
+        componentWillMount = function () {
+            var geometries = _this.props.geometries;
+            var point = [];
+            var name = '';
+            var polygon = [];
+
+            if (geometries.length > 0) {
+                geometries.map(function (geo) {
+                    if (geo.geometry.type === 'Point') {
+                        point = geo.geometry.coordinates;
+                        name = geo.name;
+                    } else {
+                        geo.geometry.coordinates[0].map(function (latLng) {
+                            var reverse = [latLng[1], latLng[0]];
+                            polygon.push(reverse);
+                        });
+                    }
+                });
+                _this.setState({ point: point, name: name, polygon: polygon });
+            }
+
+        };_this.state = { point: null, polygon: null, name: '' };return _this;}_createClass(CaseGeo, [{ key: 'render', value: function render()
+
+        {
+            var reversePoint = this.state.point;
+            var point = reversePoint ? [reversePoint[1], reversePoint[0]] : [];
+            var polygon = this.state.polygon;
+
+            return (
+                this.state.point &&
+                _react2.default.createElement(_reactLeaflet.Map, { center: point ? point : polygon[0], zoom: 16, style: { height: '300px' } },
+                    _react2.default.createElement(_reactLeaflet.TileLayer, {
+                        url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+                        attribution: '\xA9 <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' }),
+
+                    point &&
+                    _react2.default.createElement(_reactLeaflet.Marker, { position: point },
+                        _react2.default.createElement(_reactLeaflet.Popup, null,
+                            _react2.default.createElement('span', null, this.state.name))),
+
+
+                    polygon &&
+                    _react2.default.createElement(_reactLeaflet.Polygon, { color: 'purple', positions: polygon })));
+
+
+
+        } }]);return CaseGeo;}(_react2.default.Component);exports.default = CaseGeo;
+
+
+CaseGeo.propTypes = {
+    geometries: _propTypes2.default.array };
