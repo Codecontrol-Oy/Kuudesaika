@@ -27,7 +27,9 @@ exports[`<CaseGeo /> Should match snapshot 1`] = `
       ]
     }
   >
-    <Popup>
+    <Popup
+      pane="popupPane"
+    >
       <span>
         Alakiventie 5
       </span>
