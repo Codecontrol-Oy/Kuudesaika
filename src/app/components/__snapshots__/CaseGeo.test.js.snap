@@ -2,7 +2,6 @@
 
 exports[`<CaseGeo /> Should match snapshot 1`] = `
 <Map
-  animate={false}
   center={
     Array [
       60.22071379562326,
@@ -14,7 +13,6 @@ exports[`<CaseGeo /> Should match snapshot 1`] = `
       "height": "300px",
     }
   }
-  useFlyTo={false}
   zoom={16}
 >
   <TileLayer
